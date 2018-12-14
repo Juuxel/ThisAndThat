@@ -1,0 +1,19 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "S",
+    "P"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:birch_slab"
+    },
+    "P": {
+      "item": "thisandthat:birch_post"
+    }
+  },
+  "result": {
+    "item": "thisandthat:birch_platform",
+    "count": 1
+  }
+}

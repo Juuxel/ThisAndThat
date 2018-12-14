@@ -1,0 +1,19 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "S",
+    "P"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone_slab"
+    },
+    "P": {
+      "item": "thisandthat:stone_post"
+    }
+  },
+  "result": {
+    "item": "thisandthat:stone_platform",
+    "count": 1
+  }
+}

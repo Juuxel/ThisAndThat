@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+    {
+      "item": "thisandthat:chimney"
+    }
+  ],
+  "result": {
+    "item": "thisandthat:bubble_chimney",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "S",
+    "R"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone_slab"
+    },
+    "R": {
+      "item": "thisandthat:stone_rod"
+    }
+  },
+  "result": {
+    "item": "thisandthat:granite_step",
+    "count": 1
+  }
+}

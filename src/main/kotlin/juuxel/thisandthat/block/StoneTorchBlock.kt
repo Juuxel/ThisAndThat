@@ -5,7 +5,7 @@
 package juuxel.thisandthat.block
 
 import juuxel.thisandthat.util.ModBlock
-import juuxel.thisandthat.util.modify
+import net.fabricmc.fabric.block.FabricBlockSettings
 import net.minecraft.block.Blocks
 import net.minecraft.block.TorchBlock
 import net.minecraft.block.WallTorchBlock
@@ -26,6 +26,9 @@ class StoneTorchBlock : TorchBlock(settings), ModBlock {
     }
 
     companion object {
-        internal val settings = Settings.copy(Blocks.TORCH).modify(sounds = BlockSoundGroup.STONE, lightLevel = 15)
+        internal val settings = FabricBlockSettings.copy(Blocks.TORCH)
+            .lightLevel(15)
+            .sounds(BlockSoundGroup.STONE)
+            .build()
     }
 }

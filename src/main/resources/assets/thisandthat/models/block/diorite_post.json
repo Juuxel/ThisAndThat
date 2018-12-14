@@ -1,0 +1,6 @@
+{
+  "parent": "thisandthat:block/post",
+  "textures": {
+    "texture": "block/diorite"
+  }
+}

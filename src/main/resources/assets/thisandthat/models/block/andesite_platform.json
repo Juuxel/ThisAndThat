@@ -1,0 +1,6 @@
+{
+  "parent": "thisandthat:block/platform",
+  "textures": {
+    "texture": "block/andesite"
+  }
+}

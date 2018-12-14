@@ -1,0 +1,6 @@
+{
+  "parent": "thisandthat:block/step",
+  "textures": {
+    "texture": "block/stone"
+  }
+}

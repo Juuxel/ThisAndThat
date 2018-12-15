@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    java
     kotlin("jvm") version "1.3.11"
     idea
     id("fabric-loom") version "0.1.0-SNAPSHOT"

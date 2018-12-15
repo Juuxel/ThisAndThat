@@ -12,11 +12,13 @@ import net.minecraft.util.registry.Registry
 object ModItems : ModRegistry() {
     lateinit var ryeSeeds: ModContent<Item> private set
     lateinit var rye: ModContent<Item> private set
+    lateinit var enderFeather: ModContent<Item> private set
 
     fun init() {
         register(Registry.ITEM, StoneRodItem())
         ryeSeeds = register(Registry.ITEM, RyeSeedsItem())
         rye = register(Registry.ITEM, RyeItem())
         register(Registry.ITEM, RyeFlourItem())
+        enderFeather = register(Registry.ITEM, EnderFeatherItem())
     }
 }

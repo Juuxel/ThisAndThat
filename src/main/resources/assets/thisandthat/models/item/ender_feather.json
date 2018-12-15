@@ -1,0 +1,14 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "thisandthat:item/ender_feather"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "activated": 1
+            },
+            "model": "thisandthat:item/ender_feather_activated"
+        }
+    ]
+}

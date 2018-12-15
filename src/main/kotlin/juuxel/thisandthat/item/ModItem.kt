@@ -19,7 +19,7 @@ open class ModItem(
     private val hasDescription: Boolean = false,
     private val descriptionKey: String = "%TranslationKey.desc"
 ) : Item(settings), ModContent<Item> {
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
         if (hasDescription)
             list.add(TranslatableTextComponent(descriptionKey.replace("%TranslationKey", translationKey)).modifyStyle {
                 it.isItalic = true

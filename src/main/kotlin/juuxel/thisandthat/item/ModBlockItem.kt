@@ -22,7 +22,7 @@ class ModBlockItem(block: ModBlock)
     private val descriptionKey = block.descriptionKey
     private val isWaterloggable = block is Waterloggable
 
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
         if (isWaterloggable)
             list.add(TranslatableTextComponent("desc.thisandthat.waterloggable").modifyStyle {
                 it.color = TextFormat.BLUE

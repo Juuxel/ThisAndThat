@@ -34,7 +34,7 @@ class StepBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Wate
 
     @Suppress("OverridingDeprecatedMember")
     override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?): VoxelShape =
-        VoxelShapes.method_1084(postShape, platformShape)
+        VoxelShapes.union(postShape, platformShape)
 
     override fun getFluidState(state: BlockState): FluidState {
         return if (state.get(Properties.WATERLOGGED)) Fluids.WATER.getState(false)

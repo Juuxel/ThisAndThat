@@ -34,7 +34,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
 
     @Suppress("OverridingDeprecatedMember")
     override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?): VoxelShape =
-        VoxelShapes.method_1084(postShape, platformShape)
+        VoxelShapes.union(postShape, platformShape)
 
     override fun hasSolidTopSurface(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = true
 

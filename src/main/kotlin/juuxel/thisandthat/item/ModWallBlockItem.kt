@@ -22,7 +22,7 @@ class ModWallBlockItem(ground: ModBlock, wall: ModBlock) :
     private val hasDescription = ground.hasDescription
     private val descriptionKey = ground.descriptionKey
 
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
         if (hasDescription)
             list.add(
                 TranslatableTextComponent(

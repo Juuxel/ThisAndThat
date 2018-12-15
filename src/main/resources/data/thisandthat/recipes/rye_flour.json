@@ -1,0 +1,10 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [{
+    "item": "thisandthat:rye"
+  }],
+  "result": {
+    "item": "thisandthat:rye_flour",
+    "count": 1
+  }
+}

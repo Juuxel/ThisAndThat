@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "age=0": { "model": "thisandthat:block/rye_stage0" },
+        "age=1": { "model": "thisandthat:block/rye_stage1" },
+        "age=2": { "model": "thisandthat:block/rye_stage1" },
+        "age=3": { "model": "thisandthat:block/rye_stage2" },
+        "age=4": { "model": "thisandthat:block/rye_stage2" },
+        "age=5": { "model": "thisandthat:block/rye_stage3" },
+        "age=6": { "model": "thisandthat:block/rye_stage3" },
+        "age=7": { "model": "thisandthat:block/rye_stage4" }
+    }
+}

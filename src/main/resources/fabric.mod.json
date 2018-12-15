@@ -12,8 +12,8 @@
     }
   },
   "mixins": {
-    "client": "modid.client.json",
-    "common": "modid.common.json"
+    "client": "thisandthat.client.json",
+    "common": "thisandthat.common.json"
   },
   "languageAdapter": "net.fabricmc.language.kotlin.KotlinLanguageAdapter"
 }

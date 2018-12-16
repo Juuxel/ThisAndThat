@@ -5,7 +5,6 @@
 package juuxel.thisandthat.item
 
 import net.minecraft.entity.Entity
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack
@@ -14,6 +13,7 @@ import net.minecraft.particle.ParticleTypes
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
+import net.minecraft.text.TranslatableTextComponent
 import net.minecraft.util.Hand
 import net.minecraft.util.Identifier
 import net.minecraft.util.TypedActionResult
@@ -27,6 +27,11 @@ class EnderFeatherItem : ModItem("ender_feather", Settings().itemGroup(ItemGroup
     }
 
     override fun use(world: World, player: PlayerEntity, hand: Hand): TypedActionResult<ItemStack> {
+        if (player.isCreative) {
+            player.addChatMessage(TranslatableTextComponent("$translationKey.creative_message"), true)
+            return super.use(world, player, hand)
+        }
+
         if (player.getStackInHand(hand).damage < durability) {
             val stack = player.getStackInHand(hand)
             val previous = stack.getOrCreateTag().getBoolean("activated")

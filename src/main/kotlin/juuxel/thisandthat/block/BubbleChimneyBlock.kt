@@ -5,14 +5,13 @@
 package juuxel.thisandthat.block
 
 import juuxel.thisandthat.util.ModBlock
+import juuxel.watereddown.api.Dualloggable
+import juuxel.watereddown.api.Lavaloggable
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
-import net.minecraft.block.Waterloggable
-import net.minecraft.fluid.FluidState
-import net.minecraft.fluid.Fluids
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemPlacementContext
@@ -26,7 +25,7 @@ import net.minecraft.world.ViewableWorld
 import net.minecraft.world.World
 import java.util.*
 
-class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Waterloggable {
+class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Dualloggable {
     override val name = "bubble_chimney"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
     override val hasDescription = true
@@ -44,7 +43,7 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Wa
         val z = pos.z + 0.5
 
         for (i in 1..3) {
-            world.method_8494(ParticleTypes.BUBBLE_COLUMN_UP, x, y, z, 0.0, 0.0, 0.0)
+            world.addParticle(ParticleTypes.BUBBLE_COLUMN_UP, x, y, z, 0.0, 0.0, 0.0)
         }
     }
 
@@ -52,21 +51,19 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Wa
     override fun getTickRate(p0: ViewableWorld?) = 3
     override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = shape
 
-    override fun getFluidState(state: BlockState): FluidState {
-        return if (state.get(Properties.WATERLOGGED)) Fluids.WATER.getState(false)
-        else super.getFluidState(state)
-    }
-
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)
         return this.defaultState.with(
             Properties.WATERLOGGED,
-            state.matches(FluidTags.WATER)// && state.method_15761() == 8
+            state.matches(FluidTags.WATER)
+        ).with(
+            Lavaloggable.LAVALOGGED,
+            state.matches(FluidTags.LAVA)
         )
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(Properties.WATERLOGGED)
+        p0.with(Properties.WATERLOGGED).with(Lavaloggable.LAVALOGGED)
     }
 
     companion object {

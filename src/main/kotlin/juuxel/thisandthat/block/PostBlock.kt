@@ -27,7 +27,7 @@ class PostBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Dual
     override val descriptionKey = "block.thisandthat.post.desc"
 
     init {
-        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false)
+        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
     }
 
     @Suppress("OverridingDeprecatedMember")

@@ -30,6 +30,10 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Dualloggable
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
     override val hasDescription = true
 
+    init {
+        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
+    }
+
     @Environment(EnvType.CLIENT)
     override fun randomDisplayTick(state: BlockState?, world: World, pos: BlockPos, random: Random) {
         val x = pos.x + 0.5

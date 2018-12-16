@@ -28,7 +28,7 @@ class StepBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Dual
     override val descriptionKey = "block.thisandthat.step.desc"
 
     init {
-        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false)
+        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
     }
 
     @Suppress("OverridingDeprecatedMember")

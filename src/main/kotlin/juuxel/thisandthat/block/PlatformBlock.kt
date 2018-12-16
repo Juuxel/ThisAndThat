@@ -28,7 +28,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
     override val descriptionKey = "block.thisandthat.platform.desc"
 
     init {
-        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false)
+        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
     }
 
     @Suppress("OverridingDeprecatedMember")

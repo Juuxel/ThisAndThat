@@ -31,12 +31,12 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Du
     override val hasDescription = true
 
     init {
-        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false)
+        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
     }
 
     @Environment(EnvType.CLIENT)
     override fun randomDisplayTick(state: BlockState, world: World, pos: BlockPos, random: Random) {
-        if (!state[Properties.WATERLOGGED]) return
+        if (!state[Properties.WATERLOGGED] && !state[Lavaloggable.LAVALOGGED]) return
 
         val x = pos.x + 0.5
         val y = pos.y + 0.9

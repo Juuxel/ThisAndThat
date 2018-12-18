@@ -3,7 +3,8 @@
   "package": "juuxel.thisandthat.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemDropsMixin"
+    "ItemDropsMixin",
+    "BucketMixin"
   ],
   "injectors": {
     "defaultRequire": 1

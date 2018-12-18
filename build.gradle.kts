@@ -28,10 +28,10 @@ tasks.withType<KotlinCompile> {
 dependencies {
 	compile(kotlin("stdlib-jdk8"))
 	minecraft("com.mojang:minecraft:18w50a")
-	mappings("net.fabricmc:yarn:18w50a.27")
+	mappings("net.fabricmc:yarn:18w50a.35")
 	modCompile("net.fabricmc:fabric-loader:0.2.0.70")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-26")
-    compile(files("../WateredDown/build/libs/WateredDown-0.1.0-dev.jar"))
+    modCompile(files("../WateredDown/build/libs/WateredDown-0.2.1-dev.jar"))
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.

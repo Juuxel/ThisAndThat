@@ -5,8 +5,9 @@
 package juuxel.thisandthat.block
 
 import juuxel.thisandthat.util.ModBlock
-import juuxel.watereddown.api.Dualloggable
-import juuxel.watereddown.api.Lavaloggable
+import juuxel.watereddown.api.FluidProperty
+import juuxel.watereddown.api.Fluidloggable
+import juuxel.watereddown.api.WDProperties
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.block.Block
@@ -17,21 +18,19 @@ import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.state.StateFactory
-import net.minecraft.state.property.Properties
-import net.minecraft.tag.FluidTags
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.BlockView
 import net.minecraft.world.ViewableWorld
 import net.minecraft.world.World
 import java.util.*
 
-class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Dualloggable {
+class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Fluidloggable {
     override val name = "chimney"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
     override val hasDescription = true
 
     init {
-        defaultState = stateFactory.defaultState.with(Properties.WATERLOGGED, false).with(Lavaloggable.LAVALOGGED, false)
+        defaultState = stateFactory.defaultState.with(WDProperties.FLUID, FluidProperty.EMPTY)
     }
 
     @Environment(EnvType.CLIENT)
@@ -51,17 +50,11 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Dualloggable
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)
-        return this.defaultState.with(
-            Properties.WATERLOGGED,
-            state.matches(FluidTags.WATER)
-        ).with(
-            Lavaloggable.LAVALOGGED,
-            state.matches(FluidTags.LAVA)
-        )
+        return this.defaultState.with(WDProperties.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(Properties.WATERLOGGED).with(Lavaloggable.LAVALOGGED)
+        p0.with(WDProperties.FLUID)
     }
 
     companion object {

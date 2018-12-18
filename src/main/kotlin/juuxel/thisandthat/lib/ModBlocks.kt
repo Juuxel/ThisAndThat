@@ -30,7 +30,9 @@ object ModBlocks : ModRegistry() {
 
         registerBlock(ChimneyBlock())
         registerBlock(BubbleChimneyBlock())
-
         ryeCrop = registerBlock(RyeCropBlock())
+        registerBlock(TankBlock())
+        registerBlock(PumpBlock())
+        registerBlock(PipeBlock())
     }
 }

@@ -8,7 +8,10 @@ import juuxel.thisandthat.item.EnderFeatherItem;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerAbilities;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.TextComponent;
+import net.minecraft.text.TranslatableTextComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,20 +21,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntity.class)
 public abstract class ItemDropsMixin {
     @Shadow
-    private PlayerAbilities abilities;
+    public PlayerAbilities abilities;
 
     @Shadow
-    abstract boolean isCreative();
+    public PlayerInventory inventory;
 
     @Shadow
-    abstract boolean isSpectator();
+    public abstract boolean isCreative();
 
-    @Inject(at = @At("HEAD"), method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;")
+    @Shadow
+    public abstract boolean isSpectator();
+
+    @Shadow
+    public abstract void addChatMessage(TextComponent var1, boolean var2);
+
+    @Inject(at = @At("HEAD"), method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;",
+            cancellable = true)
     private void onDropItem(ItemStack stack, boolean b1, boolean b2, CallbackInfoReturnable<ItemEntity> info) {
-        if (stack.getItem() instanceof EnderFeatherItem && !isCreative() && !isSpectator()) {
-            stack.getOrCreateTag().putBoolean("activated", false);
-            abilities.flying = false;
-            // TODO Figure out why this doesn't work
+        if (stack.getItem() instanceof EnderFeatherItem && !isCreative() && !isSpectator() &&
+            abilities.flying) {
+            addChatMessage(new TranslatableTextComponent("item.thisandthat.ender_feather.flying_drop"), true);
+            inventory.insertStack(stack);
+            info.setReturnValue(null);
         }
     }
 }

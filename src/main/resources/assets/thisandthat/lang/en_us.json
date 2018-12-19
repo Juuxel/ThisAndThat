@@ -47,6 +47,7 @@
   "item.thisandthat.rye_flour.desc": "Used to bake bread",
   "item.thisandthat.ender_feather": "Ender Feather",
   "item.thisandthat.ender_feather.creative_message": "The Ender Feather can't be used in Creative Mode.",
+  "item.thisandthat.ender_feather.flying_drop": "The Ender Feather flies back to you. You should try landing.",
   "_3": "Misc",
   "desc.thisandthat.waterloggable": "Waterloggable"
 }

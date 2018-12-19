@@ -58,13 +58,11 @@ public abstract class BucketMixin extends Item {
                         world.setBlockState(pos, world.getBlockState(pos).with(WDProperties.FLUID, FluidProperty.EMPTY));
                     ItemStack filled = getFilledStack(stack, player, fluid.getBucketItem());
                     info.setReturnValue(new TypedActionResult<>(ActionResult.SUCCESS, filled));
-                    info.cancel();
                 } else if (state.get(WDProperties.FLUID).getFluid() == Fluids.EMPTY) {
                     if (!world.isClient)
                         world.setBlockState(pos, world.getBlockState(pos).with(WDProperties.FLUID, new FluidProperty.Wrapper(fluid)));
                     ItemStack emptied = getEmptiedStack(stack, player);
                     info.setReturnValue(new TypedActionResult<>(ActionResult.SUCCESS, emptied));
-                    info.cancel();
                 }
             }
         }

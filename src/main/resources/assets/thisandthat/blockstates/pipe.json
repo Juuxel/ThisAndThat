@@ -1,5 +1,17 @@
 {
-  "variants": {
-    "": { "model": "thisandthat:block/pipe" }
-  }
+  "multipart": [
+    { "apply": { "model": "thisandthat:block/pipe_center" }},
+    { "when": { "east": "true" },
+      "apply": { "model": "thisandthat:block/pipe_side", "y": 180 }},
+    { "when": { "south": "true" },
+      "apply": { "model": "thisandthat:block/pipe_side", "y": 270 }},
+    { "when": { "west": "true" },
+      "apply": { "model": "thisandthat:block/pipe_side", "y": 0 }},
+    { "when": { "north": "true" },
+      "apply": { "model": "thisandthat:block/pipe_side", "y": 90 }},
+    { "when": { "up": "true" },
+      "apply": { "model": "thisandthat:block/pipe_up" }},
+    { "when": { "down": "true" },
+      "apply": { "model": "thisandthat:block/pipe_down" }}
+  ]
 }

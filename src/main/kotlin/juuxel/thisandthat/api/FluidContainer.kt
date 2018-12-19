@@ -10,8 +10,10 @@ import net.minecraft.util.math.Direction
 import net.minecraft.world.World
 
 interface FluidContainer {
-    val capacity: Int
     val insertableAmount: TransferAmount
+
+    fun getCapacity(world: World, pos: BlockPos, state: BlockState): Int
+    fun getContents(world: World, pos: BlockPos, state: BlockState): Iterable<FluidStack>
 
     fun canInsert(world: World, pos: BlockPos, state: BlockState, side: Direction, stack: FluidStack): Boolean
     fun canExtract(world: World, pos: BlockPos, state: BlockState, side: Direction, amount: TransferAmount): Boolean

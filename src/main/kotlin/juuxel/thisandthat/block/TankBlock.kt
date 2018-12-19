@@ -25,7 +25,6 @@ import net.minecraft.world.World
 class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, FluidContainer {
     override val name = "tank"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
-    override val capacity = FluidStack.AMOUNT_BUCKET
     override val insertableAmount = TransferAmount.exact(FluidStack.AMOUNT_BUCKET)
 
     init {
@@ -62,4 +61,13 @@ class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, FluidContai
             world.setBlockState(pos, state.with(FLUID, FluidProperty.Wrapper(stack.fluid)))
             true
         } else false
+
+    override fun getCapacity(world: World, pos: BlockPos, state: BlockState) =
+        FluidStack.AMOUNT_BUCKET
+
+    override fun getContents(world: World, pos: BlockPos, state: BlockState) =
+        setOf(
+            if (state[FLUID].fluid == Fluids.EMPTY) FluidStack.EMPTY
+            else FluidStack(state[FLUID].fluid, FluidStack.AMOUNT_BUCKET)
+        )
 }

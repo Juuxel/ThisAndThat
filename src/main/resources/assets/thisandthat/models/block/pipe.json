@@ -1,6 +1,0 @@
-{
-  "parent": "thisandthat:block/post",
-  "textures": {
-    "texture": "block/iron_block"
-  }
-}

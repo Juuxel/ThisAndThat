@@ -8,6 +8,10 @@ import net.minecraft.fluid.Fluid
 import net.minecraft.fluid.Fluids
 
 data class FluidStack(val fluid: Fluid, val amount: Int) {
+    init {
+        require(amount >= 0)
+    }
+
     companion object {
         val EMPTY = FluidStack(Fluids.EMPTY, 0)
         const val AMOUNT_BUCKET = 1620

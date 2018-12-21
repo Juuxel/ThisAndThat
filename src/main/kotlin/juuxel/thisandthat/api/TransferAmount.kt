@@ -5,6 +5,11 @@
 package juuxel.thisandthat.api
 
 data class TransferAmount(val min: Int, val max: Int) {
+    init {
+        require(min >= 0 && max >= 0)
+        require(min <= max)
+    }
+
     companion object {
         fun exact(amount: Int) = TransferAmount(amount, amount)
         fun min(amount: Int) = TransferAmount(amount, Int.MAX_VALUE)

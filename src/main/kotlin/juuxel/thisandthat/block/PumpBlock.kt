@@ -35,11 +35,12 @@ class PumpBlock : Block(Block.Settings.copy(Blocks.STONE)), ModBlock {
         var9: Float
     ): Boolean {
         if ((world.getBlockState(pos.down()).block !is FluidContainer && world.getBlockState(pos.down()).block !is FluidBlock) ||
-            (world.getBlockState(pos.up()).block !is FluidContainer && world.getBlockState(pos.up()).block !is PipeBlock)) {
+            world.getBlockState(pos.up()).block !is FluidContainer
+        ) {
             return false
         }
 
-        val abovePos = findContainerPos(world, pos, Direction.UP) ?: return true
+        val abovePos = pos.up()
         val aboveState = world.getBlockState(abovePos)
         val above = aboveState.block as FluidContainer
 
@@ -67,16 +68,5 @@ class PumpBlock : Block(Block.Settings.copy(Blocks.STONE)), ModBlock {
         }
 
         return true
-    }
-
-    private fun findContainerPos(world: World, pos: BlockPos, direction: Direction): BlockPos? {
-        var ret = pos.offset(direction)
-
-        while (world.getBlockState(ret).block is PipeBlock)
-            ret = ret.offset(direction)
-
-        return if (world.getBlockState(ret).block is FluidContainer)
-            ret
-        else null
     }
 }

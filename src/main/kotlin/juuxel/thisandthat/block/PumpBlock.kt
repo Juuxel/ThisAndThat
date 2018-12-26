@@ -4,8 +4,9 @@
  */
 package juuxel.thisandthat.block
 
-import juuxel.thisandthat.api.FluidContainer
-import juuxel.thisandthat.api.FluidStack
+import io.github.prospector.silk.fluid.DropletValues
+import io.github.prospector.silk.fluid.FluidContainer
+import io.github.prospector.silk.util.ContainerInteraction
 import juuxel.thisandthat.util.ModBlock
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -21,7 +22,7 @@ import net.minecraft.world.World
 
 class PumpBlock : Block(Block.Settings.copy(Blocks.STONE)), ModBlock {
     override val name = "pump"
-    override val itemSettings = Item.Settings().itemGroup(ItemGroup.REDSTONE)
+    override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
 
     override fun activate(
         state: BlockState,
@@ -34,49 +35,41 @@ class PumpBlock : Block(Block.Settings.copy(Blocks.STONE)), ModBlock {
         var8: Float,
         var9: Float
     ): Boolean {
-        if ((world.getBlockState(pos.down()).block !is FluidContainer && world.getBlockState(pos.down()).block !is FluidBlock) ||
-            (world.getBlockState(pos.up()).block !is FluidContainer && world.getBlockState(pos.up()).block !is PipeBlock)) {
+        if ((world.getBlockEntity(pos.down()) !is FluidContainer && world.getBlockState(pos.down()).block !is FluidBlock) ||
+            (world.getBlockEntity(pos.up()) !is FluidContainer)) {
             return false
         }
 
-        val abovePos = findContainerPos(world, pos, Direction.UP) ?: return true
-        val aboveState = world.getBlockState(abovePos)
-        val above = aboveState.block as FluidContainer
+        val above = world.getBlockEntity(pos.up()) as FluidContainer
 
-        when (world.getBlockState(pos.down()).block) {
-            is FluidContainer -> {
-                val belowState = world.getBlockState(pos.down())
-                val below = belowState.block as FluidContainer
-                val stack = below.extract(world, pos.down(), belowState, Direction.UP, FluidStack.AMOUNT_BUCKET, simulated = true)
+        when {
+            world.getBlockEntity(pos.down()) is FluidContainer -> {
+                val below = world.getBlockEntity(pos.down()) as FluidContainer
+                val fluid = below.getFluids(Direction.UP).first().fluid
+                val amount = below.tryPartialExtractFluid(Direction.UP, fluid, DropletValues.BUCKET,
+                    ContainerInteraction.SIMULATE)
 
-                if (stack.amount > 0) {
-                    above.insert(world, abovePos, aboveState, Direction.DOWN, stack)
-                    below.extract(world, pos.down(), belowState, Direction.UP, FluidStack.AMOUNT_BUCKET, simulated = false)
+                if (amount > 0 && above.canInsertFluid(Direction.DOWN, fluid, amount)) {
+                    above.insertFluid(Direction.DOWN, fluid, amount)
+                    below.tryPartialExtractFluid(Direction.UP, fluid, DropletValues.BUCKET, ContainerInteraction.EXECUTE)
                 }
             }
 
-            is FluidBlock -> {
+            world.getBlockState(pos.down()).block is FluidBlock -> {
                 val belowState = world.getBlockState(pos.down())
 
-                if (belowState.fluidState.isStill) {
-                    val stack = FluidStack(belowState.fluidState.fluid, FluidStack.AMOUNT_BUCKET)
+                if (belowState.fluidState.isStill && above.canInsertFluid(
+                        Direction.DOWN,
+                        belowState.fluidState.fluid,
+                        DropletValues.BUCKET
+                    )
+                ) {
                     world.setBlockState(pos.down(), Blocks.AIR.defaultState)
-                    above.insert(world, abovePos, aboveState, Direction.DOWN, stack)
+                    above.insertFluid(Direction.DOWN, belowState.fluidState.fluid, DropletValues.BUCKET)
                 }
             }
         }
 
         return true
-    }
-
-    private fun findContainerPos(world: World, pos: BlockPos, direction: Direction): BlockPos? {
-        var ret = pos.offset(direction)
-
-        while (world.getBlockState(ret).block is PipeBlock)
-            ret = ret.offset(direction)
-
-        return if (world.getBlockState(ret).block is FluidContainer)
-            ret
-        else null
     }
 }

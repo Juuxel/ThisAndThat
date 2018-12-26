@@ -44,7 +44,7 @@ public abstract class BucketMixin extends Item {
 
     @Inject(at = @At("HEAD"), method = "use", cancellable = true)
     private void onUse(World world, PlayerEntity player, Hand hand, CallbackInfoReturnable<TypedActionResult<ItemStack>> info) {
-        boolean isEmpty = fluid == Fluids.EMPTY;
+        /*boolean isEmpty = fluid == Fluids.EMPTY;
         ItemStack stack = player.getStackInHand(hand);
         HitResult result = getHitResult(world, player, isEmpty);
         if (result == null) return;
@@ -65,6 +65,6 @@ public abstract class BucketMixin extends Item {
                     info.setReturnValue(new TypedActionResult<>(ActionResult.SUCCESS, emptied));
                 }
             }
-        }
+        }*/
     }
 }

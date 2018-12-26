@@ -32,6 +32,7 @@ dependencies {
 	modCompile("net.fabricmc:fabric-loader:0.2.0.70")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-26")
     modCompile(files("../WateredDown/build/libs/WateredDown-0.2.1-dev.jar"))
+    modCompile("io.github.prospector.silk:SilkAPI:1.0.0-25")
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
 
 	// Fabric API. This is technically optional, but you probably want it anyway.

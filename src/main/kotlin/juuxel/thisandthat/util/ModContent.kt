@@ -5,6 +5,7 @@
 package juuxel.thisandthat.util
 
 import net.minecraft.block.Block
+import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.item.Item
 
 interface ModContent<out T> {
@@ -19,4 +20,5 @@ interface ModBlock : ModContent<Block> {
     val registerItem: Boolean get() = true
     val hasDescription: Boolean get() = false
     val descriptionKey: String get() = "%TranslationKey.desc"
+    val blockEntityType: BlockEntityType<*>? get() = null
 }

@@ -21,6 +21,8 @@ abstract class ModRegistry {
 
         if (content.registerItem)
             Registry.register(Registry.ITEM, "thisandthat:${content.name}", ModBlockItem(content))
+        if (content.blockEntityType != null)
+            Registry.register(Registry.BLOCK_ENTITY, "thisandthat:${content.name}", content.blockEntityType)
 
         return content
     }

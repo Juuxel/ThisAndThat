@@ -34,5 +34,6 @@ object ModBlocks : ModRegistry() {
         registerBlock(TankBlock())
         registerBlock(PumpBlock())
         registerBlock(PipeBlock())
+        registerBlock(FluidHopperBlock())
     }
 }

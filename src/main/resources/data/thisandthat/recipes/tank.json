@@ -1,0 +1,14 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:glass"
+    },
+    {
+      "item": "minecraft:bucket"
+    }],
+  "result": {
+    "item": "thisandthat:tank",
+    "count": 1
+  }
+}

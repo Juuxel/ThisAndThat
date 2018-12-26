@@ -4,33 +4,36 @@
  */
 package juuxel.thisandthat.block
 
-import io.github.prospector.silk.fluid.DropletValues
 import juuxel.thisandthat.util.ModBlock
+import juuxel.watereddown.api.FluidProperty
+import juuxel.watereddown.api.Fluidloggable
 import net.minecraft.block.*
-import net.minecraft.block.entity.BlockEntityType
-import net.minecraft.client.render.block.BlockRenderLayer
+import net.minecraft.fluid.BaseFluid
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
-import net.minecraft.util.math.BlockPos
-import net.minecraft.world.BlockView
+import net.minecraft.item.ItemPlacementContext
+import net.minecraft.state.StateFactory
 
-class TankBlock : BlockWithEntity(Settings.copy(Blocks.GLASS)), ModBlock {
+class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, Fluidloggable {
     override val name = "tank"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
-    override val blockEntityType: BlockEntityType<*>? = Companion.blockEntityType
 
-    // Copied from GlassBlock
-    override fun method_9579(var1: BlockState, var2: BlockView, var3: BlockPos) = true
-    override fun getRenderLayer() = BlockRenderLayer.CUTOUT
-    override fun isSimpleFullBlock(var1: BlockState, var2: BlockView, var3: BlockPos) = false
+    init {
+        defaultState = stateFactory.defaultState.with(FluidProperty.FLUID, FluidProperty.EMPTY)
+    }
 
-    override fun getRenderType(blockState_1: BlockState?) = RenderTypeBlock.MODEL
-    override fun createBlockEntity(var1: BlockView?) = Entity()
+    override fun appendProperties(builder: StateFactory.Builder<Block, BlockState>) {
+        builder.with(FluidProperty.FLUID)
+    }
 
-    class Entity internal constructor() : FluidContainerBlockEntity(CAPACITY, blockEntityType)
-
-    companion object {
-        private val blockEntityType = BlockEntityType(::Entity, null)
-        private const val CAPACITY = DropletValues.BUCKET
+    override fun getPlacementState(
+        context: ItemPlacementContext
+    ): BlockState? {
+        val state = context.world.getFluidState(context.pos)
+        return super.getPlacementState(context)?.apply {
+            (state.fluid as? BaseFluid)?.let {
+                with(FluidProperty.FLUID, FluidProperty.Wrapper(it.still))
+            }
+        }
     }
 }

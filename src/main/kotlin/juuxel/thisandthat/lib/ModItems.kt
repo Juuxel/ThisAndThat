@@ -20,6 +20,5 @@ object ModItems : ModRegistry() {
         rye = register(Registry.ITEM, RyeItem())
         register(Registry.ITEM, RyeFlourItem())
         enderFeather = register(Registry.ITEM, EnderFeatherItem())
-        register(Registry.ITEM, FluidmeterItem())
     }
 }

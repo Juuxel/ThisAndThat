@@ -7,7 +7,6 @@ package juuxel.thisandthat.block
 import juuxel.thisandthat.util.ModBlock
 import juuxel.watereddown.api.FluidProperty
 import juuxel.watereddown.api.Fluidloggable
-import juuxel.watereddown.api.WDProperties
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.block.Block
@@ -31,12 +30,12 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Fl
     override val hasDescription = true
 
     init {
-        defaultState = stateFactory.defaultState.with(WDProperties.FLUID, FluidProperty.EMPTY)
+        defaultState = stateFactory.defaultState.with(FluidProperty.FLUID, FluidProperty.EMPTY)
     }
 
     @Environment(EnvType.CLIENT)
     override fun randomDisplayTick(state: BlockState, world: World, pos: BlockPos, random: Random) {
-        if (state[WDProperties.FLUID].fluid == Fluids.EMPTY) return
+        if (state[FluidProperty.FLUID].fluid == Fluids.EMPTY) return
 
         val x = pos.x + 0.5
         val y = pos.y + 0.9
@@ -53,11 +52,11 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Fl
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)
-        return this.defaultState.with(WDProperties.FLUID, FluidProperty.Wrapper(state.fluid))
+        return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(WDProperties.FLUID)
+        p0.with(FluidProperty.FLUID)
     }
 
     companion object {

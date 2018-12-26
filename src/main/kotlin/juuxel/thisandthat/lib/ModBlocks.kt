@@ -32,8 +32,5 @@ object ModBlocks : ModRegistry() {
         registerBlock(BubbleChimneyBlock())
         ryeCrop = registerBlock(RyeCropBlock())
         registerBlock(TankBlock())
-        registerBlock(PumpBlock())
-        registerBlock(PipeBlock())
-        registerBlock(FluidHopperBlock())
     }
 }

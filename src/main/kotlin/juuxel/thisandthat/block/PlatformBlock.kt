@@ -8,7 +8,6 @@ import juuxel.thisandthat.util.BlockVariant
 import juuxel.thisandthat.util.ModBlock
 import juuxel.watereddown.api.FluidProperty
 import juuxel.watereddown.api.Fluidloggable
-import juuxel.watereddown.api.WDProperties
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.item.Item
@@ -27,7 +26,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
     override val descriptionKey = "block.thisandthat.platform.desc"
 
     init {
-        defaultState = stateFactory.defaultState.with(WDProperties.FLUID, FluidProperty.EMPTY)
+        defaultState = stateFactory.defaultState.with(FluidProperty.FLUID, FluidProperty.EMPTY)
     }
 
     @Suppress("OverridingDeprecatedMember")
@@ -36,11 +35,11 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)
-        return this.defaultState.with(WDProperties.FLUID, FluidProperty.Wrapper(state.fluid))
+        return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(WDProperties.FLUID)
+        p0.with(FluidProperty.FLUID)
     }
 
     companion object {

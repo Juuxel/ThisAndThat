@@ -13,6 +13,7 @@ object ModItems : ModRegistry() {
     lateinit var ryeSeeds: ModContent<Item> private set
     lateinit var rye: ModContent<Item> private set
     lateinit var enderFeather: ModContent<Item> private set
+    lateinit var prismarineCoal: ModContent<Item> private set
 
     fun init() {
         register(Registry.ITEM, StoneRodItem())
@@ -20,5 +21,6 @@ object ModItems : ModRegistry() {
         rye = register(Registry.ITEM, RyeItem())
         register(Registry.ITEM, RyeFlourItem())
         enderFeather = register(Registry.ITEM, EnderFeatherItem())
+        prismarineCoal = register(Registry.ITEM, PrismarineCoalItem())
     }
 }

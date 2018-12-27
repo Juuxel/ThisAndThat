@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=east": { "model": "thisandthat:block/wall_prismarine_torch" },
+        "facing=south": { "model": "thisandthat:block/wall_prismarine_torch", "y": 90 },
+        "facing=west": { "model": "thisandthat:block/wall_prismarine_torch", "y": 180 },
+        "facing=north": { "model": "thisandthat:block/wall_prismarine_torch", "y": 270 }
+    }
+}

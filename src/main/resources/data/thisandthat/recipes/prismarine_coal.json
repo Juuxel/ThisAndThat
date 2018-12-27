@@ -1,0 +1,14 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    }],
+  "result": {
+    "item": "thisandthat:prismarine_coal",
+    "count": 2
+  }
+}

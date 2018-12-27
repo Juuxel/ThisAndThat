@@ -1,0 +1,7 @@
+{
+  "parent": "block/fire_floor",
+  "textures": {
+    "particle": "thisandthat:block/wet_fire",
+    "fire": "thisandthat:block/wet_fire"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    { "apply": [{ "model": "thisandthat:block/wet_fire_floor" }] },
+    { "apply": [{ "model": "thisandthat:block/wet_fire_side" }] },
+    { "apply": [{ "model": "thisandthat:block/wet_fire_side", "y": 90 }] },
+    { "apply": [{ "model": "thisandthat:block/wet_fire_side", "y": 180 }] },
+    { "apply": [{ "model": "thisandthat:block/wet_fire_side", "y": 270 }] }
+  ]
+}

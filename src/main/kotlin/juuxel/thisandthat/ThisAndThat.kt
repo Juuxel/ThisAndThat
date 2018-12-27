@@ -6,11 +6,13 @@ package juuxel.thisandthat
 
 import juuxel.thisandthat.lib.ModBlocks
 import juuxel.thisandthat.lib.ModItems
+import juuxel.thisandthat.lib.ModTags
 import net.fabricmc.api.ModInitializer
 
 object ThisAndThat : ModInitializer {
     override fun onInitialize() {
         ModBlocks.init()
         ModItems.init()
+        ModTags.init()
     }
 }

@@ -56,6 +56,10 @@
   "item.thisandthat.ender_feather": "Ender Feather",
   "item.thisandthat.ender_feather.creative_message": "The Ender Feather can't be used in Creative Mode.",
   "item.thisandthat.ender_feather.flying_drop": "The Ender Feather flies back to you. You should try landing.",
+  "item.thisandthat.prismarine_coal": "Prismarine Coal",
+  "item.thisandthat.prismarine_coal.desc": "Can burn underwater",
+  "item.thisandthat.prismarine_torch": "Prismarine Torch",
+  "item.thisandthat.prismarine_torch.desc": "Can shine underwater",
   "_3": "Misc",
   "desc.thisandthat.waterloggable": "Waterloggable"
 }

@@ -46,7 +46,7 @@ class WetFireBlock : Block(Settings.copy(Blocks.FIRE)), ModBlock, Fluidloggable 
     }
 
     private fun extinguishIfCantBurn(world: World, pos: BlockPos) {
-        val wrongBlock = world.tagManager.blocks()[ModTags.burnsUnderwater.id]?.contains(world.getBlockState(pos.down()).block) != true
+        val wrongBlock = !world.getBlockState(pos.down()).block.matches(ModTags.keepsWetFireBurning)
 
         if (!canPlaceAt(null, world, pos) || wrongBlock ||
             !world.getFluidState(pos).fluid.matches(ModTags.canContainWetFire)) {

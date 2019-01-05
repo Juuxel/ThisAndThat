@@ -7,6 +7,7 @@ package juuxel.thisandthat.util
 import net.minecraft.block.Block
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.item.Item
+import net.shadowfacts.simplemultipart.multipart.Multipart
 
 interface ModContent<out T> {
     val name: String
@@ -15,10 +16,15 @@ interface ModContent<out T> {
     fun unwrap(): T = this as T
 }
 
-interface ModBlock : ModContent<Block> {
-    val itemSettings: Item.Settings?
+interface BlockLikeContent<out T> : ModContent<T> {
     val registerItem: Boolean get() = true
     val hasDescription: Boolean get() = false
     val descriptionKey: String get() = "%TranslationKey.desc"
+}
+
+interface ModBlock : BlockLikeContent<Block> {
+    val itemSettings: Item.Settings?
     val blockEntityType: BlockEntityType<*>? get() = null
 }
+
+interface ModMultipart : BlockLikeContent<Multipart>

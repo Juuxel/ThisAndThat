@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "half=bottom,location=center": { "model": "thisandthat:multipart/oak_post_bottom_center" },
+    "half=bottom,location=north":  { "model": "thisandthat:multipart/oak_post_bottom_side" },
+    "half=bottom,location=east":   { "model": "thisandthat:multipart/oak_post_bottom_side", "y": 90 },
+    "half=bottom,location=south":  { "model": "thisandthat:multipart/oak_post_bottom_side", "y": 180 },
+    "half=bottom,location=west":   { "model": "thisandthat:multipart/oak_post_bottom_side", "y": 270 },
+
+    "half=top,location=center": { "model": "thisandthat:multipart/oak_post_top_center" },
+    "half=top,location=north":  { "model": "thisandthat:multipart/oak_post_top_side" },
+    "half=top,location=east":   { "model": "thisandthat:multipart/oak_post_top_side", "y": 90 },
+    "half=top,location=south":  { "model": "thisandthat:multipart/oak_post_top_side", "y": 180 },
+    "half=top,location=west":   { "model": "thisandthat:multipart/oak_post_top_side", "y": 270 },
+
+    "inventory": { "model": "thisandthat:multipart/oak_post_bottom_center" }}
+}

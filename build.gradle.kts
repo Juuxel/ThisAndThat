@@ -17,6 +17,10 @@ base {
     archivesBaseName = "ThisAndThat"
 }
 
+repositories {
+    maven(url = "https://maven.shadowfacts.net")
+}
+
 version = "0.1.1"
 
 minecraft {
@@ -29,9 +33,9 @@ tasks.withType<KotlinCompile> {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     minecraft("com.mojang:minecraft:18w50a")
-    mappings("net.fabricmc:yarn:18w50a.59")
-    modCompile("net.fabricmc:fabric-loader:0.2.0.70")
-    modCompile("net.fabricmc:fabric:0.1.1.51")
+    mappings("net.fabricmc:yarn:18w50a.82")
+    modCompile("net.fabricmc:fabric-loader:0.3.2.91")
+    modCompile("net.fabricmc:fabric:0.1.3.68")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-26")
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
 
@@ -40,4 +44,5 @@ dependencies {
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
+    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.0")
 }

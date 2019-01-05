@@ -12,6 +12,7 @@ object ThisAndThat : ModInitializer {
         ModConfig.init()
         ModBlocks.init()
         ModItems.init()
+        ModMultiparts.init()
         ModTags.init()
         ModConfig.config.save()
     }

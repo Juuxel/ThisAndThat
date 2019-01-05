@@ -5,9 +5,9 @@ import juuxel.thisandthat.util.ModBlock
 import juuxel.watereddown.api.FluidProperty
 import juuxel.watereddown.api.Fluidloggable
 import net.minecraft.block.Block
+import net.minecraft.block.BlockRenderLayer
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
-import net.minecraft.client.render.block.BlockRenderLayer
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateFactory
 import net.minecraft.util.math.BlockPos

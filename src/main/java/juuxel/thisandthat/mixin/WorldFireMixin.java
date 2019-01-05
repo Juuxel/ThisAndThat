@@ -1,6 +1,6 @@
 package juuxel.thisandthat.mixin;
 
-import juuxel.thisandthat.block.WetFireBlock;
+import juuxel.thisandthat.lib.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class WorldFireMixin implements ViewableWorld {
     @Redirect(method = "doesAreaContainFireSource", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"))
     private Block getBlockProxy(BlockState state) {
-        if (state.getBlock() instanceof WetFireBlock)
+        if (state.getBlock().matches(ModTags.INSTANCE.getFire()))
             return Blocks.FIRE;
 
         return state.getBlock();

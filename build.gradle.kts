@@ -44,5 +44,5 @@ dependencies {
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
-    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.0")
+    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.1")
 }

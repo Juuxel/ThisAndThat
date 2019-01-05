@@ -58,6 +58,9 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         builder.with(location, half)
     }
 
+    /*override*/ fun canIntersectWith(self: MultipartState, other: MultipartState) =
+        other.multipart is PlatformMultipart
+
     companion object {
         val location = EnumProperty.create("location", Location::class.java)
         val half = EnumProperty.create("half", BlockHalf::class.java)

@@ -13,6 +13,7 @@ object ModConfig {
     ).apply { load() }
 
     val enderFeathers = config["items.enderFeathers", false] // false for now
+    val multiparts = config["modules.multipart", true]
 
     fun init() {}
 }

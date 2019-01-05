@@ -1,0 +1,6 @@
+{
+  "parent": "thisandthat:multipart/platform/base/top",
+  "textures": {
+    "texture": "block/birch_planks"
+  }
+}

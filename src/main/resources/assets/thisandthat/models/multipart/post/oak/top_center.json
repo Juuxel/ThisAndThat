@@ -1,0 +1,6 @@
+{
+  "parent": "thisandthat:multipart/post/base/top_center",
+  "textures": {
+    "texture": "block/oak_planks"
+  }
+}

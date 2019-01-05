@@ -12,8 +12,10 @@ object ModMultiparts : ModRegistry() {
     fun init() {
         if (!exists("net.shadowfacts.simplemultipart.SimpleMultipart") || !ModConfig.multiparts) return
 
-        registerMultipart(PostMultipart(BlockVariant.Wood.Oak))
-        registerMultipart(PlatformMultipart(BlockVariant.Wood.Oak))
+        for (variant in BlockVariant.Wood.values()) {
+            registerMultipart(PostMultipart(variant))
+            registerMultipart(PlatformMultipart(variant))
+        }
     }
 
     private fun exists(clazz: String): Boolean =

@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "half=bottom,location=xn_zn":  { "model": "thisandthat:multipart/platform/spruce/bottom" },
+    "half=bottom,location=xp_zn":   { "model": "thisandthat:multipart/platform/spruce/bottom", "uvlock": true, "y": 90 },
+    "half=bottom,location=xp_zp":  { "model": "thisandthat:multipart/platform/spruce/bottom", "uvlock": true, "y": 180 },
+    "half=bottom,location=xn_zp":   { "model": "thisandthat:multipart/platform/spruce/bottom", "uvlock": true, "y": 270 },
+    "half=top,location=xn_zn":  { "model": "thisandthat:multipart/platform/spruce/top" },
+    "half=top,location=xp_zn":   { "model": "thisandthat:multipart/platform/spruce/top", "uvlock": true, "y": 90 },
+    "half=top,location=xp_zp":  { "model": "thisandthat:multipart/platform/spruce/top", "uvlock": true, "y": 180 },
+    "half=top,location=xn_zp":   { "model": "thisandthat:multipart/platform/spruce/top", "uvlock": true, "y": 270 },
+    "inventory": { "model": "thisandthat:multipart/platform/spruce/bottom" }}
+}

@@ -61,5 +61,6 @@
   "item.thisandthat.prismarine_torch": "Prismarine Torch",
   "item.thisandthat.prismarine_torch.desc": "Can shine underwater",
   "_3": "Misc",
-  "desc.thisandthat.waterloggable": "Waterloggable"
+  "desc.thisandthat.waterloggable": "Waterloggable",
+  "desc.thisandthat.multipart": "Multipart"
 }

@@ -22,6 +22,10 @@ class ModMultipartItem(multipart: ModMultipart)
     private val descriptionKey = multipart.descriptionKey
 
     override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+        list.add(TranslatableTextComponent("desc.thisandthat.multipart").modifyStyle {
+            it.color = TextFormat.DARK_RED
+        })
+
         if (hasDescription)
             list.add(TranslatableTextComponent(descriptionKey.replace("%TranslationKey", translationKey)).modifyStyle {
                 it.isItalic = true

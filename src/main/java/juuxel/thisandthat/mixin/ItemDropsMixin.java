@@ -38,7 +38,7 @@ public abstract class ItemDropsMixin {
     @Inject(at = @At("HEAD"), method = "dropItem(Lnet/minecraft/item/ItemStack;ZZ)Lnet/minecraft/entity/ItemEntity;",
             cancellable = true)
     private void onDropItem(ItemStack stack, boolean b1, boolean b2, CallbackInfoReturnable<ItemEntity> info) {
-        if (stack.getItem() instanceof EnderFeatherItem && !isCreative() && !isSpectator() &&
+        if (stack.getItem() instanceof EnderFeatherItem && stack.getOrCreateTag().getBoolean("activated") &&
             abilities.flying) {
             addChatMessage(new TranslatableTextComponent("item.thisandthat.ender_feather.flying_drop"), true);
             inventory.insertStack(stack);

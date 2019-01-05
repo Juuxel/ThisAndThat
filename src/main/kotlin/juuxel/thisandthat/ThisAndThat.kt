@@ -4,15 +4,15 @@
  */
 package juuxel.thisandthat
 
-import juuxel.thisandthat.lib.ModBlocks
-import juuxel.thisandthat.lib.ModItems
-import juuxel.thisandthat.lib.ModTags
+import juuxel.thisandthat.lib.*
 import net.fabricmc.api.ModInitializer
 
 object ThisAndThat : ModInitializer {
     override fun onInitialize() {
+        ModConfig.init()
         ModBlocks.init()
         ModItems.init()
         ModTags.init()
+        ModConfig.config.save()
     }
 }

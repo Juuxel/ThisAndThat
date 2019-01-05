@@ -20,7 +20,9 @@ object ModItems : ModRegistry() {
         ryeSeeds = register(Registry.ITEM, RyeSeedsItem())
         rye = register(Registry.ITEM, RyeItem())
         register(Registry.ITEM, RyeFlourItem())
-        enderFeather = register(Registry.ITEM, EnderFeatherItem())
         prismarineCoal = register(Registry.ITEM, PrismarineCoalItem())
+
+        if (ModConfig.enderFeathers)
+            enderFeather = register(Registry.ITEM, EnderFeatherItem())
     }
 }

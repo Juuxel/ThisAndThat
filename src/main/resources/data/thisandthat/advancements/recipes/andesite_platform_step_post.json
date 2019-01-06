@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thisandthat:andesite_post",
+      "thisandthat:andesite_platform",
+      "thisandthat:andesite_step"
+    ]
+  },
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:andesite"
+          }
+        ]
+      }
+    },
+    "has_post_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:andesite_post"
+      }
+    },
+    "has_platform_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:andesite_platform"
+      }
+    },
+    "has_step_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:andesite_step"
+      }
+    }
+  },
+  "requirements": [[
+    "has_ingredient",
+    "has_post_recipe",
+    "has_platform_recipe",
+    "has_step_recipe"
+  ]]
+}

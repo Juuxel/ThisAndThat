@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thisandthat:granite_post",
+      "thisandthat:granite_platform",
+      "thisandthat:granite_step"
+    ]
+  },
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:granite"
+          }
+        ]
+      }
+    },
+    "has_post_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:granite_post"
+      }
+    },
+    "has_platform_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:granite_platform"
+      }
+    },
+    "has_step_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:granite_step"
+      }
+    }
+  },
+  "requirements": [[
+    "has_ingredient",
+    "has_post_recipe",
+    "has_platform_recipe",
+    "has_step_recipe"
+  ]]
+}

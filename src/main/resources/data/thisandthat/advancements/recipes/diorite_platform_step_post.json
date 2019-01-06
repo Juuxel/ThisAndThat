@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thisandthat:diorite_post",
+      "thisandthat:diorite_platform",
+      "thisandthat:diorite_step"
+    ]
+  },
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:diorite"
+          }
+        ]
+      }
+    },
+    "has_post_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:diorite_post"
+      }
+    },
+    "has_platform_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:diorite_platform"
+      }
+    },
+    "has_step_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:diorite_step"
+      }
+    }
+  },
+  "requirements": [[
+    "has_ingredient",
+    "has_post_recipe",
+    "has_platform_recipe",
+    "has_step_recipe"
+  ]]
+}

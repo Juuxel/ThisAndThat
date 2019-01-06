@@ -1,0 +1,46 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "thisandthat:sandstone_post",
+      "thisandthat:sandstone_platform",
+      "thisandthat:sandstone_step"
+    ]
+  },
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:sandstone"
+          }
+        ]
+      }
+    },
+    "has_post_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:sandstone_post"
+      }
+    },
+    "has_platform_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:sandstone_platform"
+      }
+    },
+    "has_step_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "thisandthat:sandstone_step"
+      }
+    }
+  },
+  "requirements": [[
+    "has_ingredient",
+    "has_post_recipe",
+    "has_platform_recipe",
+    "has_step_recipe"
+  ]]
+}

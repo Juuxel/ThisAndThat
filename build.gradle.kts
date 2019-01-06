@@ -1,3 +1,4 @@
+import org.gradle.jvm.tasks.Jar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -5,7 +6,6 @@ plugins {
     kotlin("jvm") version "1.3.11"
     idea
     id("fabric-loom") version "0.1.0-SNAPSHOT"
-    id("com.github.johnrengelman.shadow") version "4.0.3"
 }
 
 java {
@@ -19,15 +19,21 @@ base {
 
 repositories {
     maven(url = "https://maven.shadowfacts.net")
+    mavenCentral()
 }
 
-version = "0.1.1"
+version = "0.2.0"
 
 minecraft {
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+configurations {
+    create("provided")
+    this["compile"].extendsFrom(this["provided"])
 }
 
 dependencies {
@@ -40,9 +46,13 @@ dependencies {
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
 
     // Other libraries
-    implementation("com.github.anymaker:tnjson:1.2")
+    add("provided", "com.github.anymaker:tnjson:1.2")
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
     modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.1")
+}
+
+tasks.withType<Jar> {
+    from(configurations["provided"].asFileTree.files.map { zipTree(it) })
 }

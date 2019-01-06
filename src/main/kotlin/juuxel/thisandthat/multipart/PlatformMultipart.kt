@@ -4,15 +4,18 @@
  */
 package juuxel.thisandthat.multipart
 
+import juuxel.thisandthat.lib.ModMultiparts
 import juuxel.thisandthat.util.BlockVariant
 import juuxel.thisandthat.util.ModMultipart
 import juuxel.thisandthat.util.MultipartUtils
+import juuxel.thisandthat.util.TTMultipartPlacementContext
 import net.minecraft.block.Block
 import net.minecraft.block.enums.BlockHalf
 import net.minecraft.state.StateFactory
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringRepresentable
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.ViewableWorld
 import net.shadowfacts.simplemultipart.container.MultipartContainer
@@ -20,6 +23,7 @@ import net.shadowfacts.simplemultipart.multipart.Multipart
 import net.shadowfacts.simplemultipart.multipart.MultipartState
 import net.shadowfacts.simplemultipart.multipart.MultipartView
 import net.shadowfacts.simplemultipart.util.MultipartPlacementContext
+import java.lang.IllegalArgumentException
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -31,12 +35,48 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     }
 
     override fun getPlacementState(context: MultipartPlacementContext): MultipartState {
-        val x = context.hitX.roundToInt() % 2
-        val z = context.hitZ.roundToInt() % 2
+        val x: Int
+        val z: Int
+        val hitSide = context.facing
 
-        val l = Location.values().firstOrNull { it.x == x && it.z == z } ?: Location.XN_ZN
+        when {
+            hitSide.axis.isHorizontal -> {
+                val xOffset = when (hitSide) {
+                    Direction.WEST -> -0.25f
+                    Direction.EAST -> 0.25f
+                    else -> 0f
+                }
 
-        return defaultState.with(half, MultipartUtils.getHalf(context)).with(location, l)
+                val zOffset = when (hitSide) {
+                    Direction.NORTH -> -0.25f
+                    Direction.SOUTH -> 0.25f
+                    else -> 0f
+                }
+
+                x = (context.hitX + xOffset).roundToInt() % 2
+                z = (context.hitZ + zOffset).roundToInt() % 2
+            }
+
+            else -> {
+                x = context.hitX.roundToInt() % 2
+                z = context.hitZ.roundToInt() % 2
+            }
+        }
+
+        val l = (Location.values().firstOrNull { it.x == x && it.z == z } ?: Location.XN_ZN).let {
+            if (!hitSide.axis.isHorizontal || context !is TTMultipartPlacementContext) return@let it
+
+            if (context.isOffset) it.oppositeOn(hitSide.axis)
+            else it
+        }
+
+        val h = MultipartUtils.getHalf(context).let {
+            if (context is TTMultipartPlacementContext && !context.isOffset && context.hitY >= 1f)
+                if (it == BlockHalf.TOP) BlockHalf.BOTTOM else BlockHalf.TOP
+            else it
+        }
+
+        return defaultState.with(half, h).with(location, l)
     }
 
     override fun getBoundingShape(state: MultipartState, view: MultipartView?) =
@@ -77,5 +117,25 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         XN_ZN(0, 0);
 
         override fun asString() = name.toLowerCase(Locale.ROOT)
+
+        fun oppositeOn(axis: Direction.Axis): Location = when (axis) {
+            Direction.Axis.X -> {
+                when (this) {
+                    XP_ZP -> XN_ZP
+                    XP_ZN -> XN_ZN
+                    XN_ZP -> XP_ZP
+                    XN_ZN -> XP_ZN
+                }
+            }
+            Direction.Axis.Z -> {
+                when (this) {
+                    XP_ZP -> XP_ZN
+                    XP_ZN -> XP_ZP
+                    XN_ZP -> XN_ZN
+                    XN_ZN -> XN_ZP
+                }
+            }
+            Direction.Axis.Y -> throw IllegalArgumentException("no y axis pls")
+        }
     }
 }

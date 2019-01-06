@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+// TODO Not needed if SimpleMultipart#2 is merged
 @Mixin(AbstractContainerBlockEntity.class)
 public class MultipartContainerMixin extends BlockEntity {
     public MultipartContainerMixin(BlockEntityType<?> blockEntityType_1) {

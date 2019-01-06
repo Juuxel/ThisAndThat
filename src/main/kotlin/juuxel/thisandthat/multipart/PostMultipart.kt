@@ -7,12 +7,14 @@ package juuxel.thisandthat.multipart
 import juuxel.thisandthat.util.BlockVariant
 import juuxel.thisandthat.util.ModMultipart
 import juuxel.thisandthat.util.MultipartUtils
+import juuxel.thisandthat.util.TTMultipartPlacementContext
 import net.minecraft.block.Block
 import net.minecraft.block.enums.BlockHalf
 import net.minecraft.state.StateFactory
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringRepresentable
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.ViewableWorld
 import net.shadowfacts.simplemultipart.multipart.Multipart
@@ -38,13 +40,30 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         val cx = abs(8f - x)
         val cz = abs(8f - z)
 
-        val l = when {
-            x > max && cx <= cz -> Location.East
-            x < min && cx >= cz -> Location.West
-            z > max -> Location.South
-            z < min -> Location.North
-            x in min..max && z in min..max -> Location.Center
-            else -> Location.Center
+        fun tryCenter(fallback: Location): Location =
+            if ((context as? TTMultipartPlacementContext)?.isOffset != true && context.container.canInsert(
+                    defaultState.with(half, MultipartUtils.getHalf(context))
+                        .with(location, Location.Center)
+                )) Location.Center
+            else fallback
+
+        val l = when (context.facing) {
+            Direction.NORTH -> tryCenter(Location.North)
+            Direction.EAST -> tryCenter(Location.East)
+            Direction.SOUTH -> tryCenter(Location.South)
+            Direction.WEST -> tryCenter(Location.West)
+            else -> when {
+                x > max && cx <= cz -> Location.East
+                x < min && cx >= cz -> Location.West
+                z > max -> Location.South
+                z < min -> Location.North
+                x in min..max && z in min..max -> Location.Center
+                else -> Location.Center
+            }
+        }.let {
+            if (context is TTMultipartPlacementContext && context.facing.axis.isHorizontal && context.isOffset)
+                it.opposite
+            else it
         }
 
         return defaultState.with(half, MultipartUtils.getHalf(context)).with(location, l)
@@ -83,5 +102,12 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         Center;
 
         override fun asString() = name.toLowerCase(Locale.ROOT)
+        val opposite get() = when (this) {
+            North -> South
+            South -> North
+            East -> West
+            West -> East
+            Center -> Center
+        }
     }
 }

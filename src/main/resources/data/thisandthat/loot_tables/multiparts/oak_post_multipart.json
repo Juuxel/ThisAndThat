@@ -1,0 +1,14 @@
+{
+  "type": "multipart:multipart",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "thisandthat:oak_post_multipart"
+        }
+      ]
+    }
+  ]
+}

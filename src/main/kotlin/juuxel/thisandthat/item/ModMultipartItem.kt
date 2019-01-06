@@ -17,6 +17,8 @@ import net.minecraft.world.World
 import net.shadowfacts.simplemultipart.item.MultipartItem
 import net.minecraft.block.Blocks
 import juuxel.thisandthat.util.TTMultipartPlacementContext
+import net.minecraft.util.SystemUtil
+import net.minecraft.util.registry.Registry
 
 // TODO Item settings, requires SimpleMultipart update
 class ModMultipartItem(multipart: ModMultipart)
@@ -24,6 +26,11 @@ class ModMultipartItem(multipart: ModMultipart)
     override val name = multipart.name
     private val hasDescription = multipart.hasDescription
     private val descriptionKey = multipart.descriptionKey
+    private val _translationKey by lazy {
+        SystemUtil.createTranslationKey("multipart", Registry.ITEM.getId(this))
+    }
+
+    override fun getOrCreateTranslationKey() = _translationKey
 
     override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
         list.add(TranslatableTextComponent("desc.thisandthat.multipart").modifyStyle {
@@ -37,6 +44,7 @@ class ModMultipartItem(multipart: ModMultipart)
             })
     }
 
+    // TODO Remove on SimpleMultipart update
     override fun tryPlace(context: ItemUsageContext): ActionResult {
         // If a multipart inside an existing container was clicked, try inserting into that
         val hitContainer = getContainer(context)

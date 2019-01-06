@@ -24,5 +24,8 @@ object ModItems : ModRegistry() {
 
         if (ModConfig.enderFeathers)
             enderFeather = register(Registry.ITEM, EnderFeatherItem())
+
+        if (ModConfig.multiparts)
+            register(Registry.ITEM, SawItem())
     }
 }

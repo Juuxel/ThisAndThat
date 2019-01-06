@@ -26,6 +26,8 @@ import kotlin.math.abs
 
 class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     override val name = "${variant.contentName}_post_multipart"
+    override val hasDescription = true
+    override val descriptionKey = "block.thisandthat.post.desc"
 
     init {
         defaultState = defaultState.with(location, Location.Center).with(half, BlockHalf.BOTTOM)

@@ -1,0 +1,11 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    { "item": "thisandthat:acacia_post_multipart" },
+    { "item": "thisandthat:acacia_post_multipart" }
+  ],
+  "result": {
+    "item": "thisandthat:acacia_post",
+    "count": 1
+  }
+}

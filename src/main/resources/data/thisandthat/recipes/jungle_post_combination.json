@@ -1,0 +1,11 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    { "item": "thisandthat:jungle_post_multipart" },
+    { "item": "thisandthat:jungle_post_multipart" }
+  ],
+  "result": {
+    "item": "thisandthat:jungle_post",
+    "count": 1
+  }
+}

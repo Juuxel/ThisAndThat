@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    {
+      "item": "thisandthat:birch_post"
+    }],
+  "result": {
+    "item": "thisandthat:birch_platform",
+    "count": 1
+  }
+}

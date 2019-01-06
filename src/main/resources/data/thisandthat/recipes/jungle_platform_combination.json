@@ -1,0 +1,15 @@
+{
+  "type": "crafting_shapeless",
+  "ingredients": [
+    { "item": "thisandthat:jungle_platform_multipart" },
+    { "item": "thisandthat:jungle_platform_multipart" },
+    { "item": "thisandthat:jungle_platform_multipart" },
+    { "item": "thisandthat:jungle_platform_multipart" },
+    {
+      "item": "thisandthat:jungle_post"
+    }],
+  "result": {
+    "item": "thisandthat:jungle_platform",
+    "count": 1
+  }
+}

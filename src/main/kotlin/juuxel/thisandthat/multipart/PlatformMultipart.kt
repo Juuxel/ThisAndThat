@@ -29,6 +29,8 @@ import kotlin.math.roundToInt
 
 class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     override val name = "${variant.contentName}_platform_multipart"
+    override val hasDescription = true
+    override val descriptionKey = "multipart.thisandthat.platform.desc"
 
     init {
         defaultState = defaultState.with(location, Location.XN_ZN).with(half, BlockHalf.BOTTOM)

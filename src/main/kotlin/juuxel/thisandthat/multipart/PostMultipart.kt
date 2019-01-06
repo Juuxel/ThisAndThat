@@ -12,7 +12,9 @@ import net.minecraft.block.enums.BlockHalf
 import net.minecraft.state.StateFactory
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringRepresentable
+import net.minecraft.util.math.BlockPos
 import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.ViewableWorld
 import net.shadowfacts.simplemultipart.multipart.Multipart
 import net.shadowfacts.simplemultipart.multipart.MultipartState
 import net.shadowfacts.simplemultipart.multipart.MultipartView
@@ -20,7 +22,6 @@ import net.shadowfacts.simplemultipart.util.MultipartPlacementContext
 import java.util.*
 import kotlin.math.abs
 
-// TODO variants
 class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     override val name = "${variant.contentName}_post_multipart"
 
@@ -64,6 +65,9 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
 
     /*override*/ fun canIntersectWith(self: MultipartState, other: MultipartState) =
         other.multipart is PlatformMultipart
+
+    override fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) =
+        state[half] == BlockHalf.TOP && state[location] == Location.Center
 
     companion object {
         val location = EnumProperty.create("location", Location::class.java)

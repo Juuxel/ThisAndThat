@@ -32,8 +32,6 @@ class PostBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Flui
     override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?): VoxelShape =
         PlatformBlock.postShape
 
-    override fun hasSolidTopSurface(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = true
-
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)
         return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))

@@ -55,9 +55,9 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     /*override*/ fun canIntersectWith(self: MultipartState, other: MultipartState) =
         other.multipart is PostMultipart
 
-    override fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos)=
-        Location.values().map { l ->
-            (world.getBlockEntity(pos) as MultipartContainer).parts.any {
+    override fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) =
+        state[half] == BlockHalf.TOP && Location.values().map { l ->
+            (world.getBlockEntity(pos) as? MultipartContainer ?: return false).parts.any {
                 it.multipart is PlatformMultipart &&
                         it.state[half] == BlockHalf.TOP &&
                         it.state[location] == l

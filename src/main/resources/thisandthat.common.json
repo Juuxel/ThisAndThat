@@ -3,7 +3,7 @@
   "package": "juuxel.thisandthat.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemDropsMixin", "WorldFireMixin", "BurnTimeMixin", "TorchPlacementMixin", "MultipartTagMixin"
+    "ItemDropsMixin", "WorldFireMixin", "BurnTimeMixin", "TorchPlacementMixin", "MultipartContainerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

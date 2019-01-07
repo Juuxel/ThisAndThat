@@ -1,0 +1,26 @@
+{
+  "parent": "thisandthat:main/chimney",
+  "display": {
+    "icon": {
+      "item": "thisandthat:bubble_chimney"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.bubble_chimney"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.bubble_chimney.desc"
+    },
+    "hidden": true
+  },
+  "criteria": {
+    "get_bubble_chimney": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:bubble_chimney"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_bubble_chimney" ]]
+}

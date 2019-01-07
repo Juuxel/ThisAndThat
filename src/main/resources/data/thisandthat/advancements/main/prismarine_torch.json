@@ -1,0 +1,26 @@
+{
+  "parent": "thisandthat:main/stone_torch",
+  "display": {
+    "icon": {
+      "item": "thisandthat:prismarine_torch"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.prismarine_torch"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.prismarine_torch.desc"
+    },
+    "hidden": true
+  },
+  "criteria": {
+    "get_prismarine_torch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:prismarine_torch"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_prismarine_torch" ]]
+}

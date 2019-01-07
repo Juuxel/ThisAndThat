@@ -32,8 +32,8 @@ tasks.withType<KotlinCompile> {
 }
 
 configurations {
-    create("provided")
-    this["compile"].extendsFrom(this["provided"])
+    create("shadow")
+    this["compile"].extendsFrom(this["shadow"])
 }
 
 dependencies {
@@ -46,7 +46,7 @@ dependencies {
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
 
     // Other libraries
-    add("provided", "com.github.anymaker:tnjson:1.2")
+    add("shadow", "com.github.anymaker:tnjson:1.2")
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
@@ -54,5 +54,5 @@ dependencies {
 }
 
 tasks.withType<Jar> {
-    from(configurations["provided"].asFileTree.files.map { zipTree(it) })
+    from(configurations["shadow"].asFileTree.files.map { zipTree(it) })
 }

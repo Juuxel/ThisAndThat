@@ -1,0 +1,27 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:ender_feather"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.ender_feather"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.ender_feather.desc"
+    },
+    "hidden": true,
+    "frame": "goal"
+  },
+  "criteria": {
+    "get_ender_feather": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:ender_feather"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_ender_feather" ]]
+}

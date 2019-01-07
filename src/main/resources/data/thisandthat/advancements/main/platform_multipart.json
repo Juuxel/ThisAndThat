@@ -1,0 +1,65 @@
+{
+  "parent": "thisandthat:main/saw",
+  "display": {
+    "icon": {
+      "item": "thisandthat:oak_platform_multipart"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.platform_multipart"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.platform_multipart.desc"
+    }
+  },
+  "criteria": {
+    "oak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:oak_platform_multipart"
+        }]
+      }
+    },
+    "spruce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:spruce_platform_multipart"
+        }]
+      }
+    },
+    "birch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:birch_platform_multipart"
+        }]
+      }
+    },
+    "jungle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:jungle_platform_multipart"
+        }]
+      }
+    },
+    "acacia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:acacia_platform_multipart"
+        }]
+      }
+    },
+    "dark_oak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:dark_oak_platform_multipart"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" ]]
+}

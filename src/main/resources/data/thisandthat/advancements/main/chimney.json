@@ -1,0 +1,25 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:chimney"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.chimney"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.chimney.desc"
+    }
+  },
+  "criteria": {
+    "get_chimney": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:chimney"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_chimney" ]]
+}

@@ -1,0 +1,116 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:granite_post"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.post"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.post.desc"
+    }
+  },
+  "criteria": {
+    "oak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:oak_post"
+        }]
+      }
+    },
+    "spruce": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:spruce_post"
+        }]
+      }
+    },
+    "birch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:birch_post"
+        }]
+      }
+    },
+    "jungle": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:jungle_post"
+        }]
+      }
+    },
+    "acacia": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:acacia_post"
+        }]
+      }
+    },
+    "dark_oak": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:dark_oak_post"
+        }]
+      }
+    },
+    "stone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:stone_post"
+        }]
+      }
+    },
+    "cobblestone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:cobblestone_post"
+        }]
+      }
+    },
+    "sandstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:sandstone_post"
+        }]
+      }
+    },
+    "granite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:granite_post"
+        }]
+      }
+    },
+    "andesite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:andesite_post"
+        }]
+      }
+    },
+    "diorite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:diorite_post"
+        }]
+      }
+    }
+  },
+  "requirements": [[
+    "oak", "spruce", "birch", "jungle", "acacia", "dark_oak",
+    "stone", "cobblestone", "sandstone", "granite", "andesite", "diorite"
+  ]]
+}

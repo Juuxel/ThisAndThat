@@ -1,0 +1,25 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:rye_seeds"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.rye_seeds"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.rye_seeds.desc"
+    }
+  },
+  "criteria": {
+    "get_seeds": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:rye_seeds"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_seeds" ]]
+}

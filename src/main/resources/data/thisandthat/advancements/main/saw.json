@@ -1,0 +1,25 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:saw"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.saw"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.saw.desc"
+    }
+  },
+  "criteria": {
+    "get_saw": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:saw"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_saw" ]]
+}

@@ -1,0 +1,25 @@
+{
+  "parent": "thisandthat:main/root",
+  "display": {
+    "icon": {
+      "item": "thisandthat:stone_torch"
+    },
+    "title": {
+      "translate": "advancements.thisandthat.stone_torch"
+    },
+    "description": {
+      "translate": "advancements.thisandthat.stone_torch.desc"
+    }
+  },
+  "criteria": {
+    "get_stone_torch": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [{
+          "item": "thisandthat:stone_torch"
+        }]
+      }
+    }
+  },
+  "requirements": [[ "get_stone_torch" ]]
+}

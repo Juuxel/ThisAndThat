@@ -13,6 +13,7 @@ object ModTags {
     val canContainWetFire = FluidTags.class_3487(Identifier("thisandthat:can_contain_wet_fire"))
     val fire = TagRegistry.block(Identifier("thisandthat:fire"))
     val canSupportTorches = TagRegistry.block(Identifier("thisandthat:can_support_torches"))
+    val seeds = TagRegistry.item(Identifier("thisandthat:seeds"))
 
     // To ensure that the object is loaded.
     fun init() {}

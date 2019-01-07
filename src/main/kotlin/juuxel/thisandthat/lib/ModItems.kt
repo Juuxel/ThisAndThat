@@ -22,11 +22,9 @@ object ModItems : ModRegistry() {
         register(Registry.ITEM, RyeFlourItem())
         prismarineCoal = register(Registry.ITEM, PrismarineCoalItem())
         register(Registry.ITEM, ModItem("logo", Item.Settings()))
+        register(Registry.ITEM, SawItem())
 
         if (ModConfig.enderFeathers)
             enderFeather = register(Registry.ITEM, EnderFeatherItem())
-
-        if (ModConfig.multiparts)
-            register(Registry.ITEM, SawItem())
     }
 }

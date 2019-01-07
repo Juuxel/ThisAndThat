@@ -1,0 +1,10 @@
+{
+  predicate: {
+    type: "block",
+    id: "thisandthat:spruce_platform"
+  },
+  output: [
+    { type: "item", id: "thisandthat:spruce_platform_multipart", amount: 4 },
+    { type: "item", id: "thisandthat:spruce_post_multipart", amount: 2 }
+  ]
+}

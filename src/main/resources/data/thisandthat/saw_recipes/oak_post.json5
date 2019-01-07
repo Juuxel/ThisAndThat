@@ -1,0 +1,9 @@
+{
+  predicate: {
+    type: "block",
+    id: "thisandthat:oak_post"
+  },
+  output: [
+    { type: "item", id: "thisandthat:oak_post_multipart", amount: 2 }
+  ]
+}

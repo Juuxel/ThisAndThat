@@ -1,0 +1,10 @@
+{
+  predicate: {
+    type: "block",
+    id: "thisandthat:jungle_platform"
+  },
+  output: [
+    { type: "item", id: "thisandthat:jungle_platform_multipart", amount: 4 },
+    { type: "item", id: "thisandthat:jungle_post_multipart", amount: 2 }
+  ]
+}

@@ -14,7 +14,6 @@ object ThisAndThat : ModInitializer {
         ModItems.init()
         ModMultiparts.init()
         ModTags.init()
-        ModSawRecipes.init()
         ModConfig.config.save()
     }
 }

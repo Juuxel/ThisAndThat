@@ -1,0 +1,10 @@
+{
+  predicate: {
+    type: "block",
+    id: "thisandthat:acacia_platform"
+  },
+  output: [
+    { type: "item", id: "thisandthat:acacia_platform_multipart", amount: 4 },
+    { type: "item", id: "thisandthat:acacia_post_multipart", amount: 2 }
+  ]
+}

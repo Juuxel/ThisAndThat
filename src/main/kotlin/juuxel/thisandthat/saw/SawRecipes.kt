@@ -1,18 +1,15 @@
-package juuxel.thisandthat.util
+package juuxel.thisandthat.saw
 
 import net.minecraft.block.BlockState
 import net.minecraft.item.ItemStack
 
-// TODO JSONs / JSON5s?
 object SawRecipes {
-    private val recipes = HashSet<Recipe>()
+    private val recipes = HashSet<SawRecipe>()
 
-    fun register(recipe: Recipe) {
+    internal fun register(recipe: SawRecipe) {
         recipes += recipe
     }
 
     fun getOutput(input: BlockState): List<ItemStack> =
         recipes.firstOrNull { it.predicate(input) }?.transform?.invoke(input) ?: emptyList()
-
-    data class Recipe(val predicate: (BlockState) -> Boolean, val transform: (BlockState) -> List<ItemStack>)
 }

@@ -1,6 +1,6 @@
 package juuxel.thisandthat.item
 
-import juuxel.thisandthat.util.SawRecipes
+import juuxel.thisandthat.saw.SawRecipes
 import net.minecraft.entity.ItemEntity
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemStack

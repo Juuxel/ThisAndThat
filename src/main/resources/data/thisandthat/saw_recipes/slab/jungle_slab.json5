@@ -1,0 +1,12 @@
+{
+  predicate: {
+    type: "block",
+    id: "minecraft:jungle_slab",
+    state: {
+      type: "double"
+    }
+  },
+  output: [
+    { type: "item", id: "minecraft:jungle_slab", amount: 2 }
+  ]
+}

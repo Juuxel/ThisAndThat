@@ -8,12 +8,17 @@ import net.minecraft.block.BlockState
 import net.minecraft.item.ItemStack
 
 object SawRecipes {
-    private val recipes = HashSet<SawRecipe>()
+    val recipes: Set<SawRecipe> get() = mutRecipes
+    private val mutRecipes = HashSet<SawRecipe>()
 
     internal fun register(recipe: SawRecipe) {
-        recipes += recipe
+        mutRecipes += recipe
+    }
+
+    internal fun clear() {
+        mutRecipes.clear()
     }
 
     fun getOutput(input: BlockState): List<ItemStack> =
-        recipes.firstOrNull { it.predicate(input) }?.transform?.invoke(input) ?: emptyList()
+        mutRecipes.firstOrNull { it.predicate(input) }?.transform?.invoke(input) ?: emptyList()
 }

@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TagEntry.Serializer.class)
 public class TagEntrySerializerMixin {
-    private static final String JSON_RANDOM = "random";
+    private static final String JSON_RANDOM = "thisandthat:random";
 
     @Inject(method = "method_451", at = @At("RETURN"))
     private void onSerialize(JsonObject object, TagEntry entry, JsonSerializationContext context, CallbackInfo info) {

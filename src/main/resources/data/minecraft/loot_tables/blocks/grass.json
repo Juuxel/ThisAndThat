@@ -41,7 +41,7 @@
                 }
               ],
               "name": "thisandthat:seeds",
-              "random": true
+              "thisandthat:random": true
             }
           ]
         }

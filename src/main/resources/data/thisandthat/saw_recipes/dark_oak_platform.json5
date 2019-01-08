@@ -4,7 +4,7 @@
     id: "thisandthat:dark_oak_platform"
   },
   output: [
-    { type: "item", id: "thisandthat:dark_oak_platform_multipart", amount: 4 },
-    { type: "item", id: "thisandthat:dark_oak_post_multipart", amount: 2 }
+    { type: "thisandthat:item", id: "thisandthat:dark_oak_platform_multipart", amount: 4 },
+    { type: "thisandthat:item", id: "thisandthat:dark_oak_post_multipart", amount: 2 }
   ]
 }

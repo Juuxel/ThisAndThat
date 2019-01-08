@@ -7,6 +7,6 @@
     }
   },
   output: [
-    { type: "item", id: "minecraft:acacia_slab", amount: 2 }
+    { type: "thisandthat:item", id: "minecraft:acacia_slab", amount: 2 }
   ]
 }

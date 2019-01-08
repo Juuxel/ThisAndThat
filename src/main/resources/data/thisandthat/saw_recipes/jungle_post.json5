@@ -4,6 +4,6 @@
     id: "thisandthat:jungle_post"
   },
   output: [
-    { type: "item", id: "thisandthat:jungle_post_multipart", amount: 2 }
+    { type: "thisandthat:item", id: "thisandthat:jungle_post_multipart", amount: 2 }
   ]
 }

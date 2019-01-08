@@ -4,6 +4,6 @@
     id: "thisandthat:birch_post"
   },
   output: [
-    { type: "item", id: "thisandthat:birch_post_multipart", amount: 2 }
+    { type: "thisandthat:item", id: "thisandthat:birch_post_multipart", amount: 2 }
   ]
 }

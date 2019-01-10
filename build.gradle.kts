@@ -20,6 +20,7 @@ base {
 repositories {
     maven(url = "https://maven.shadowfacts.net")
     mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 version = "0.2.0"
@@ -46,6 +47,7 @@ dependencies {
 
     // Other libraries
     add("shadow", "com.github.anymaker:tnjson:1.2")
+    add("shadow", "com.github.Juuxel:Jay:e4e5d72318")
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))

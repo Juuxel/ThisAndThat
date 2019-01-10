@@ -4,7 +4,8 @@
  */
 package juuxel.thisandthat.saw
 
-import a2u.tn.utils.json.JsonParser
+import juuxel.jay.JsonObject
+import juuxel.jay.Parser
 import net.minecraft.item.ItemStack
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceReloadListener
@@ -30,7 +31,7 @@ object SawRecipeLoader : ResourceReloadListener {
             false
         }.map(manager::getResource).forEach {
             SawRecipes.register(
-                readRecipe(JsonParser.parse(it.inputStream.bufferedReader().lineSequence().joinToString(separator = "\n")))
+                readRecipe(Parser.parseObj(it.inputStream.bufferedReader().lineSequence().joinToString(separator = "\n")))
                     ?: run {
                         logger.error("[ThisAndThat] Could not load saw recipe ${it.id}")
                         return@forEach
@@ -42,22 +43,22 @@ object SawRecipeLoader : ResourceReloadListener {
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun readRecipe(map: Map<String, Any>): SawRecipe? {
-        val transform = (map["output"] as? List<Any>)?.let(::readTransform) ?: return null
-        val predicate = (map["predicate"] as? Map<String, Any>)?.let(::readPredicate) ?: return null
+    private fun readRecipe(obj: JsonObject): SawRecipe? {
+        val transform = obj.list("output")?.let(::readTransform) ?: return null
+        val predicate = obj.obj("predicate")?.let(::readPredicate) ?: return null
 
         return SawRecipe(predicate, transform)
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun readPredicate(map: Map<String, Any>): SawPredicate? {
-        val type = map["type"]?.toString() ?: return null
-        val id = Identifier(map["id"]?.toString() ?: return null)
+    private fun readPredicate(obj: JsonObject): SawPredicate? {
+        val type = obj.string("type") ?: return null
+        val id = Identifier(obj.string("id") ?: return null)
 
         return when (type) {
             "tag" -> {{ it.block.matches(BlockTags.getContainer()[id]) }}
             "block" -> {{
-                val state = map["state"] as? Map<String, Any> ?: emptyMap()
+                val state = obj.obj("state")?.asMap ?: emptyMap()
                 Registry.BLOCK.getId(it.block) == id && (state.isEmpty() || state.entries.all { (key, value) ->
                     it.entries.any {
                         it.key.getName() == key && (it.key as Property<in Comparable<Comparable<*>>>).getValueAsString(
@@ -73,13 +74,13 @@ object SawRecipeLoader : ResourceReloadListener {
     @Suppress("UNCHECKED_CAST")
     private fun readTransform(list: List<Any>): SawTransform? {
         val functions: List<(() -> List<ItemStack>)?> = list.map {
-            val map = it as? Map<String, Any> ?: return@map null
-            val id = Identifier(map["id"]?.toString() ?: return@map null)
-            val amount = map["amount"]?.toString()?.toIntOrNull() ?: 1
-            val type = Identifier(map["type"]?.toString() ?: return@map null)
+            val obj = (it as? Map<String, Any> ?: return@map null).let(::JsonObject)
+            val id = Identifier(obj.string("id") ?: return@map null)
+            val amount = obj.int("amount") ?: 1
+            val type = Identifier(obj.string("type") ?: return@map null)
 
             return@map {
-                SawOutputType[type].getOutput(SawOutputType.Context(id, amount, map))
+                SawOutputType[type].getOutput(SawOutputType.Context(id, amount, obj.asMap))
             }
         }
 

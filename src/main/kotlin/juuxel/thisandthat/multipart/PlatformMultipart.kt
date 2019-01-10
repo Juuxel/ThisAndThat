@@ -22,6 +22,7 @@ import net.shadowfacts.simplemultipart.container.MultipartContainer
 import net.shadowfacts.simplemultipart.multipart.Multipart
 import net.shadowfacts.simplemultipart.multipart.MultipartState
 import net.shadowfacts.simplemultipart.multipart.MultipartView
+import net.shadowfacts.simplemultipart.util.MultipartHelper
 import net.shadowfacts.simplemultipart.util.MultipartPlacementContext
 import java.lang.IllegalArgumentException
 import java.util.*
@@ -77,9 +78,23 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
             if (!context.isOffset && context.hitY >= 1f)
                 if (it == BlockHalf.TOP) BlockHalf.BOTTOM else BlockHalf.TOP
             else it
+        }.let {
+            if (context.facing == Direction.UP && it == BlockHalf.TOP)
+                flipIfPlacingOnPost(context, l, it)
+            else it
         }
 
         return defaultState.with(half, h).with(location, l)
+    }
+
+    private fun flipIfPlacingOnPost(context: MultipartPlacementContext, l: Location, h: BlockHalf): BlockHalf {
+        val rayTrace = MultipartHelper.rayTrace(context.container, context.world, context.pos, context.player)
+
+        return if (rayTrace?.view?.multipart is PostMultipart && rayTrace.view.state[PostMultipart.half] != h && context.container.parts.none { p ->
+                p.multipart is PlatformMultipart && p.state[location] == l && p.state[half] == h
+            }
+        ) opposite(h)
+        else h
     }
 
     override fun getBoundingShape(state: MultipartState, view: MultipartView?) =
@@ -106,6 +121,11 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
                         it.state[location] == l
             }
         }.all { it }
+
+    private fun opposite(half: BlockHalf) = when (half) {
+        BlockHalf.TOP -> BlockHalf.BOTTOM
+        BlockHalf.BOTTOM -> BlockHalf.TOP
+    }
 
     companion object {
         val location = EnumProperty.create("location", Location::class.java)

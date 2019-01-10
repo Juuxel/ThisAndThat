@@ -42,7 +42,6 @@ object SawRecipeLoader : ResourceReloadListener {
         logger.info("[ThisAndThat] Loaded ${SawRecipes.recipes.size} saw recipes")
     }
 
-    @Suppress("UNCHECKED_CAST")
     private fun readRecipe(obj: JsonObject): SawRecipe? {
         val transform = obj.list("output")?.let(::readTransform) ?: return null
         val predicate = obj.obj("predicate")?.let(::readPredicate) ?: return null

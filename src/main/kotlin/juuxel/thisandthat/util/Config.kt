@@ -18,6 +18,7 @@ class Config(private val file: Path) {
     internal lateinit var map: MutableMap<String, Any>
 
     private val logger = LogManager.getLogger()
+    private var hasChanged = false
 
     fun load() {
         if (Files.notExists(file)) {
@@ -32,7 +33,8 @@ class Config(private val file: Path) {
     }
 
     fun save() {
-        Files.write(file, JsonSerializer.toJson(map, JsonSerializer.Mode.JSON5).lines())
+        if (hasChanged)
+            Files.write(file, JsonSerializer.toJson(map, JsonSerializer.Mode.JSON5).lines())
     }
 
     /**
@@ -63,5 +65,19 @@ class Config(private val file: Path) {
         }
 
         return targetMap.getOrPut(parts.last()) { defaultValue } as T
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    operator fun <T : Any> set(location: String, value: T) {
+        val parts = location.split('.')
+        var targetMap: MutableMap<String, Any> = map
+
+        for (part in parts.dropLast(1)) {
+            targetMap = map.getOrPut(part) { HashMap<String, Any>() } as? MutableMap<String, Any> ?:
+                    throw IllegalStateException("$part in $location is not a map!")
+        }
+
+        targetMap[parts.last()] = value
+        hasChanged = true
     }
 }

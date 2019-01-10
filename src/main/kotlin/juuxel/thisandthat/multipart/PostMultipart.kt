@@ -7,9 +7,10 @@ package juuxel.thisandthat.multipart
 import juuxel.thisandthat.util.BlockVariant
 import juuxel.thisandthat.util.ModMultipart
 import juuxel.thisandthat.util.MultipartUtils
-import juuxel.thisandthat.util.TTMultipartPlacementContext
 import net.minecraft.block.Block
 import net.minecraft.block.enums.BlockHalf
+import net.minecraft.item.Item
+import net.minecraft.item.ItemGroup
 import net.minecraft.state.StateFactory
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringRepresentable
@@ -28,6 +29,7 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     override val name = "${variant.contentName}_post_multipart"
     override val hasDescription = true
     override val descriptionKey = "block.thisandthat.post.desc"
+    override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
 
     init {
         defaultState = defaultState.with(location, Location.Center).with(half, BlockHalf.BOTTOM)
@@ -43,10 +45,11 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         val cz = abs(8f - z)
 
         fun tryCenter(fallback: Location): Location =
-            if ((context as? TTMultipartPlacementContext)?.isOffset != true && context.container.canInsert(
+            if (!context.isOffset && context.container.canInsert(
                     defaultState.with(half, MultipartUtils.getHalf(context))
                         .with(location, Location.Center)
-                )) Location.Center
+                )
+            ) Location.Center
             else fallback
 
         val l = when (context.facing) {
@@ -63,7 +66,7 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
                 else -> Location.Center
             }
         }.let {
-            if (context is TTMultipartPlacementContext && context.facing.axis.isHorizontal && context.isOffset)
+            if (context.facing.axis.isHorizontal && context.isOffset)
                 it.opposite
             else it
         }
@@ -84,7 +87,7 @@ class PostMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         builder.with(location, half)
     }
 
-    /*override*/ fun canIntersectWith(self: MultipartState, other: MultipartState) =
+    override fun canIntersectWith(self: MultipartState, other: MultipartState) =
         other.multipart is PlatformMultipart
 
     override fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) =

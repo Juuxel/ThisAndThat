@@ -38,19 +38,18 @@ configurations {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    minecraft("com.mojang:minecraft:18w50a")
-    mappings("net.fabricmc:yarn:18w50a.82")
-    modCompile("net.fabricmc:fabric-loader:0.3.2.91")
-    modCompile("net.fabricmc:fabric:0.1.3.68")
-    modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-26")
-    compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
+    minecraft("com.mojang:minecraft:19w02a")
+    mappings("net.fabricmc:yarn:19w02a.13")
+    modCompile("net.fabricmc:fabric-loader:0.3.2.92")
+    modCompile("net.fabricmc:fabric:0.1.4.71")
+    modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-29")
 
     // Other libraries
     add("shadow", "com.github.anymaker:tnjson:1.2")
 
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
-    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.1")
+    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.2")
 }
 
 tasks.withType<Jar> {

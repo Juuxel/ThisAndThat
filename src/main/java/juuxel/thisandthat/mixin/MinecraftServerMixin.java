@@ -9,6 +9,7 @@ import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.mojang.datafixers.DataFixer;
 import juuxel.thisandthat.saw.SawRecipeLoader;
+import net.minecraft.class_3950;
 import net.minecraft.resource.ReloadableResourceManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandManager;
@@ -30,7 +31,7 @@ public class MinecraftServerMixin {
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onConstruct(File f, Proxy p, DataFixer df, ServerCommandManager scm,
                              YggdrasilAuthenticationService yas, MinecraftSessionService mss, GameProfileRepository r,
-                             UserCache c, CallbackInfo info) {
+                             UserCache c, class_3950 c2, CallbackInfo info) {
         dataManager.addListener(SawRecipeLoader.INSTANCE);
     }
 }

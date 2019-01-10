@@ -3,8 +3,13 @@
   "package": "juuxel.thisandthat.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemDropsMixin", "WorldFireMixin", "BurnTimeMixin", "TorchPlacementMixin", "MultipartContainerMixin",
-    "TagEntryMixin", "TagEntrySerializerMixin", "MinecraftServerMixin"
+    "BurnTimeMixin",
+    "ItemDropsMixin",
+    "MinecraftServerMixin",
+    "TagEntryMixin",
+    "TagEntrySerializerMixin",
+    "TorchPlacementMixin",
+    "WorldFireMixin"
   ],
   "injectors": {
     "defaultRequire": 1

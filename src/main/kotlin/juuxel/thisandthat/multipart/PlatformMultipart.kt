@@ -4,13 +4,13 @@
  */
 package juuxel.thisandthat.multipart
 
-import juuxel.thisandthat.lib.ModMultiparts
 import juuxel.thisandthat.util.BlockVariant
 import juuxel.thisandthat.util.ModMultipart
 import juuxel.thisandthat.util.MultipartUtils
-import juuxel.thisandthat.util.TTMultipartPlacementContext
 import net.minecraft.block.Block
 import net.minecraft.block.enums.BlockHalf
+import net.minecraft.item.Item
+import net.minecraft.item.ItemGroup
 import net.minecraft.state.StateFactory
 import net.minecraft.state.property.EnumProperty
 import net.minecraft.util.StringRepresentable
@@ -31,6 +31,7 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
     override val name = "${variant.contentName}_platform_multipart"
     override val hasDescription = true
     override val descriptionKey = "multipart.thisandthat.platform.desc"
+    override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
 
     init {
         defaultState = defaultState.with(location, Location.XN_ZN).with(half, BlockHalf.BOTTOM)
@@ -66,14 +67,14 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         }
 
         val l = (Location.values().firstOrNull { it.x == x && it.z == z } ?: Location.XN_ZN).let {
-            if (!hitSide.axis.isHorizontal || context !is TTMultipartPlacementContext) return@let it
+            if (!hitSide.axis.isHorizontal) return@let it
 
             if (context.isOffset) it.oppositeOn(hitSide.axis)
             else it
         }
 
         val h = MultipartUtils.getHalf(context).let {
-            if (context is TTMultipartPlacementContext && !context.isOffset && context.hitY >= 1f)
+            if (!context.isOffset && context.hitY >= 1f)
                 if (it == BlockHalf.TOP) BlockHalf.BOTTOM else BlockHalf.TOP
             else it
         }
@@ -94,7 +95,7 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         builder.with(location, half)
     }
 
-    /*override*/ fun canIntersectWith(self: MultipartState, other: MultipartState) =
+    override fun canIntersectWith(self: MultipartState, other: MultipartState) =
         other.multipart is PostMultipart
 
     override fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) =

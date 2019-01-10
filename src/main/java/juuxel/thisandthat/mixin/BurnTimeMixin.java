@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Mixin(AbstractFurnaceBlockEntity.class)
 public class BurnTimeMixin {
-    @Inject(method = "getBurnTimeMap", at = @At("RETURN"))
+    @Inject(method = "createBurnableMap", at = @At("RETURN"))
     private static void addBurnTimes(CallbackInfoReturnable<Map<Item, Integer>> info) {
         Map<Item, Integer> map = info.getReturnValue();
         map.put(ModItems.INSTANCE.getPrismarineCoal().unwrap(), map.get(Items.COAL) * 3 / 2);

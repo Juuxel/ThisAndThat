@@ -23,10 +23,10 @@ interface BlockLikeContent<out T> : ModContent<T> {
     val registerItem: Boolean get() = true
     val hasDescription: Boolean get() = false
     val descriptionKey: String get() = "%TranslationKey.desc"
+    val itemSettings: Item.Settings?
 }
 
 interface ModBlock : BlockLikeContent<Block> {
-    val itemSettings: Item.Settings?
     val blockEntityType: BlockEntityType<*>? get() = null
 }
 

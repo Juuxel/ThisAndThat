@@ -9,11 +9,8 @@ import net.minecraft.tag.FluidTags
 import net.minecraft.util.Identifier
 
 object ModTags {
-    val keepsWetFireBurning = TagRegistry.block(Identifier("thisandthat:keeps_wet_fire_burning"))
-    val canContainWetFire = FluidTags.class_3487(Identifier("thisandthat:can_contain_wet_fire"))
-    val fire = TagRegistry.block(Identifier("thisandthat:fire"))
-    val canSupportTorches = TagRegistry.block(Identifier("thisandthat:can_support_torches"))
-    val seeds = TagRegistry.item(Identifier("thisandthat:seeds"))
+    val keepsWetFireBurning = TagRegistry.block(Identifier("thisandthat", "keeps_wet_fire_burning"))
+    val canContainWetFire = FluidTags.class_3487(Identifier("thisandthat", "can_contain_wet_fire"))
 
     // To ensure that the object is loaded.
     fun init() {}

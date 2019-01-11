@@ -2,9 +2,9 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:diorite_post",
-      "thisandthat:diorite_platform",
-      "thisandthat:diorite_step"
+      "thisandthat:post/diorite_post",
+      "thisandthat:platform/diorite_platform",
+      "thisandthat:step/diorite_step"
     ]
   },
   "criteria": {

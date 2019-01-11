@@ -1,0 +1,12 @@
+{
+  "type": "crafting_shapeless",
+  "group": "thisandthat:wooden_post_combination",
+  "ingredients": [
+    { "item": "thisandthat:dark_oak_post_multipart" },
+    { "item": "thisandthat:dark_oak_post_multipart" }
+  ],
+  "result": {
+    "item": "thisandthat:dark_oak_post",
+    "count": 1
+  }
+}

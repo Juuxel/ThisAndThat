@@ -15,10 +15,8 @@ import net.minecraft.block.Blocks
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateFactory
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.math.Direction
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
-import net.minecraft.world.IWorld
 import net.minecraft.world.ViewableWorld
 import net.minecraft.world.World
 import java.util.*
@@ -36,17 +34,11 @@ class WetFireBlock : Block(Settings.copy(Blocks.FIRE)), ModBlock, Fluidloggable 
         VoxelShapes.empty()
 
     override fun canPlaceAt(state: BlockState?, world: ViewableWorld, pos: BlockPos) =
-        world.getBlockState(pos.down()).hasSolidTopSurface(world, pos)
+        world.getBlockState(pos.down()).hasSolidTopSurface(world, pos.down()) &&
+            world.getBlockState(pos).let { it.isAir || it.material.isLiquid }
 
     override fun scheduledTick(state: BlockState, world: World, pos: BlockPos, random: Random) {
         extinguishIfCantBurn(world, pos)
-    }
-
-    override fun getStateForNeighborUpdate(
-        state: BlockState, direction: Direction?, state2: BlockState?,
-        world: IWorld, pos: BlockPos, blockPos_2: BlockPos
-    ): BlockState {
-        return if (canPlaceAt(state, world, pos)) state else world.getFluidState(pos).blockState
     }
 
     private fun extinguishIfCantBurn(world: World, pos: BlockPos) {

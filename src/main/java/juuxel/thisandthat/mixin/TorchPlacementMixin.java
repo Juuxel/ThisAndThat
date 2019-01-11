@@ -4,7 +4,6 @@
  */
 package juuxel.thisandthat.mixin;
 
-import juuxel.thisandthat.lib.ModTags;
 import juuxel.thisandthat.util.ModMultipart;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,18 +24,14 @@ public class TorchPlacementMixin {
     @Inject(method = "canPlaceAt", at = @At("RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILHARD)
     private void onCanPlaceAt(BlockState state, ViewableWorld world, BlockPos pos, CallbackInfoReturnable<Boolean> info,
                               BlockPos downPos, BlockState downState, Block downBlock) {
-        BlockEntity entity = world.getBlockEntity(downPos);
         try {
-            if (downBlock.matches(ModTags.INSTANCE.getCanSupportTorches())) {
-                info.setReturnValue(true);
-                info.cancel();
-            } else if (entity instanceof MultipartContainer) {
+            BlockEntity entity = world.getBlockEntity(downPos);
+            if (entity instanceof MultipartContainer) {
                 if (((MultipartContainer) entity).getParts().stream().anyMatch(p ->
                         p.getMultipart() instanceof ModMultipart && ((ModMultipart) p.getMultipart()).canSupportTorches(
                                 p.getState(), world, downPos
                         ))) {
                     info.setReturnValue(true);
-                    info.cancel();
                 }
             }
         } catch (NullPointerException e) {

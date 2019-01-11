@@ -1,0 +1,16 @@
+{
+  "type": "crafting_shapeless",
+  "group": "thisandthat:wooden_platform_combination",
+  "ingredients": [
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    { "item": "thisandthat:birch_platform_multipart" },
+    {
+      "item": "thisandthat:birch_post"
+    }],
+  "result": {
+    "item": "thisandthat:birch_platform",
+    "count": 1
+  }
+}

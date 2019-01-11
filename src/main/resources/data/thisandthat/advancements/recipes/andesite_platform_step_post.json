@@ -2,9 +2,9 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:andesite_post",
-      "thisandthat:andesite_platform",
-      "thisandthat:andesite_step"
+      "thisandthat:post/andesite_post",
+      "thisandthat:platform/andesite_platform",
+      "thisandthat:step/andesite_step"
     ]
   },
   "criteria": {

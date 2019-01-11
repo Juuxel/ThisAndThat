@@ -2,11 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:dark_oak_post",
-      "thisandthat:dark_oak_platform",
-      "thisandthat:dark_oak_step",
-      "thisandthat:dark_oak_post_multipart",
-      "thisandthat:dark_oak_platform_multipart"
+      "thisandthat:post/dark_oak_post",
+      "thisandthat:platform/dark_oak_platform",
+      "thisandthat:step/dark_oak_step",
+      "thisandthat:post/dark_oak_post_multipart",
+      "thisandthat:platform/dark_oak_platform_multipart"
     ]
   },
   "criteria": {

@@ -1,0 +1,16 @@
+{
+  "type": "crafting_shapeless",
+  "group": "thisandthat:wooden_platform_combination",
+  "ingredients": [
+    { "item": "thisandthat:dark_oak_platform_multipart" },
+    { "item": "thisandthat:dark_oak_platform_multipart" },
+    { "item": "thisandthat:dark_oak_platform_multipart" },
+    { "item": "thisandthat:dark_oak_platform_multipart" },
+    {
+      "item": "thisandthat:dark_oak_post"
+    }],
+  "result": {
+    "item": "thisandthat:dark_oak_platform",
+    "count": 1
+  }
+}

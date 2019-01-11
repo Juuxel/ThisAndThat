@@ -1,0 +1,9 @@
+{
+  "type": "campfire",
+  "ingredient": {
+    "item": "thisandthat:rye_flour"
+  },
+  "result": "minecraft:bread",
+  "experience": 0.35,
+  "cookingtime": 600
+}

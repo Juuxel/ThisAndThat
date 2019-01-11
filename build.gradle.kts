@@ -52,6 +52,7 @@ dependencies {
     // Other mods
     modCompile(files("../WateredDown/build/libs/WateredDown-0.3.0-dev.jar"))
     modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.2")
+    modCompile(files("../Tagger/build/libs/Tagger-0.1.0-dev.jar"))
 }
 
 tasks.withType<Jar> {

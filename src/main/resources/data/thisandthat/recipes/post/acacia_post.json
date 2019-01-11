@@ -1,0 +1,21 @@
+{
+  "type": "crafting_shaped",
+  "group": "thisandthat:wooden_post",
+  "pattern": [
+    "S",
+    "S",
+    "P"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "result": {
+    "item": "thisandthat:acacia_post",
+    "count": 4
+  }
+}

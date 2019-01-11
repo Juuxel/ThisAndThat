@@ -6,10 +6,7 @@
     "BurnTimeMixin",
     "ItemDropsMixin",
     "MinecraftServerMixin",
-    "TagEntryMixin",
-    "TagEntrySerializerMixin",
-    "TorchPlacementMixin",
-    "WorldFireMixin"
+    "TorchPlacementMixin"
   ],
   "injectors": {
     "defaultRequire": 1

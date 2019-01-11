@@ -2,11 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:jungle_post",
-      "thisandthat:jungle_platform",
-      "thisandthat:jungle_step",
-      "thisandthat:jungle_post_multipart",
-      "thisandthat:jungle_platform_multipart"
+      "thisandthat:post/jungle_post",
+      "thisandthat:platform/jungle_platform",
+      "thisandthat:step/jungle_step",
+      "thisandthat:post/jungle_post_multipart",
+      "thisandthat:platform/jungle_platform_multipart"
     ]
   },
   "criteria": {

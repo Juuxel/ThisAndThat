@@ -17,6 +17,7 @@ import net.minecraft.state.StateFactory
 class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, Fluidloggable {
     override val name = "tank"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
+    override val hasDescription = true
 
     init {
         defaultState = stateFactory.defaultState.with(FluidProperty.FLUID, FluidProperty.EMPTY)

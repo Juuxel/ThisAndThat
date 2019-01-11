@@ -19,7 +19,7 @@ class PrismarineCoalItem : ModItem("prismarine_coal", Settings().itemGroup(ItemG
         val world = context.world
         val pos = context.pos.offset(context.facing)
 
-        return if (ModBlocks.wetFire.canPlaceAt(world.getBlockState(pos), world, pos)) {
+        return if (ModBlocks.wetFire.defaultState.canPlaceAt(world, pos)) {
             world.playSound(context.player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCK, 1f, 1f)
             world.setBlockState(pos, ModBlocks.wetFire.getPlacementState(ItemPlacementContext(context)), 11)
 

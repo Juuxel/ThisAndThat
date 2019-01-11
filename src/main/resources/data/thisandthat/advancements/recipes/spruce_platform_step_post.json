@@ -2,11 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:spruce_post",
-      "thisandthat:spruce_platform",
-      "thisandthat:spruce_step",
-      "thisandthat:spruce_post_multipart",
-      "thisandthat:spruce_platform_multipart"
+      "thisandthat:post/spruce_post",
+      "thisandthat:platform/spruce_platform",
+      "thisandthat:step/spruce_step",
+      "thisandthat:post/spruce_post_multipart",
+      "thisandthat:platform/spruce_platform_multipart"
     ]
   },
   "criteria": {

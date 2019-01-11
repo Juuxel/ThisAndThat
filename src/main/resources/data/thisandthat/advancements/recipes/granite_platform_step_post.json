@@ -2,9 +2,9 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:granite_post",
-      "thisandthat:granite_platform",
-      "thisandthat:granite_step"
+      "thisandthat:post/granite_post",
+      "thisandthat:platform/granite_platform",
+      "thisandthat:step/granite_step"
     ]
   },
   "criteria": {

@@ -2,11 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:birch_post",
-      "thisandthat:birch_platform",
-      "thisandthat:birch_step",
-      "thisandthat:birch_post_multipart",
-      "thisandthat:birch_platform_multipart"
+      "thisandthat:post/birch_post",
+      "thisandthat:platform/birch_platform",
+      "thisandthat:step/birch_step",
+      "thisandthat:post/birch_post_multipart",
+      "thisandthat:platform/birch_platform_multipart"
     ]
   },
   "criteria": {

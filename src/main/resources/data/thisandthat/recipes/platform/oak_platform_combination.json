@@ -1,0 +1,16 @@
+{
+  "type": "crafting_shapeless",
+  "group": "thisandthat:wooden_platform_combination",
+  "ingredients": [
+    { "item": "thisandthat:oak_platform_multipart" },
+    { "item": "thisandthat:oak_platform_multipart" },
+    { "item": "thisandthat:oak_platform_multipart" },
+    { "item": "thisandthat:oak_platform_multipart" },
+    {
+      "item": "thisandthat:oak_post"
+    }],
+  "result": {
+    "item": "thisandthat:oak_platform",
+    "count": 1
+  }
+}

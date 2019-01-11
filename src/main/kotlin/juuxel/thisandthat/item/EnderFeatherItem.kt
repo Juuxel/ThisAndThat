@@ -19,7 +19,7 @@ import net.minecraft.util.Identifier
 import net.minecraft.util.TypedActionResult
 import net.minecraft.world.World
 
-class EnderFeatherItem : ModItem("ender_feather", Settings().itemGroup(ItemGroup.TRANSPORTATION).durability(500)) {
+class EnderFeatherItem : ModItem("ender_feather", Settings().itemGroup(ItemGroup.TRANSPORTATION).durability(500), hasDescription = true) {
     init {
         addProperty(Identifier("activated")) { stack, _, _ ->
             if (stack.tag?.getBoolean("activated") == true) 1f else 0f

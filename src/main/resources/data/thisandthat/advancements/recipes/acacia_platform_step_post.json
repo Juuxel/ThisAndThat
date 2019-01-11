@@ -2,11 +2,11 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "thisandthat:acacia_post",
-      "thisandthat:acacia_platform",
-      "thisandthat:acacia_step",
-      "thisandthat:acacia_post_multipart",
-      "thisandthat:acacia_platform_multipart"
+      "thisandthat:post/acacia_post",
+      "thisandthat:platform/acacia_platform",
+      "thisandthat:step/acacia_step",
+      "thisandthat:post/acacia_post_multipart",
+      "thisandthat:platform/acacia_platform_multipart"
     ]
   },
   "criteria": {

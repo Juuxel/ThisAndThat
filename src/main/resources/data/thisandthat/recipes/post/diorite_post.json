@@ -1,0 +1,21 @@
+{
+  "type": "crafting_shaped",
+  "group": "thisandthat:stone_post",
+  "pattern": [
+    "R",
+    "R",
+    "S"
+  ],
+  "key": {
+    "R": {
+      "item": "thisandthat:stone_rod"
+    },
+    "S": {
+      "item": "minecraft:diorite"
+    }
+  },
+  "result": {
+    "item": "thisandthat:diorite_post",
+    "count": 4
+  }
+}

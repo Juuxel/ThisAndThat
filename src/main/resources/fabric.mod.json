@@ -2,7 +2,7 @@
   "id": "thisandthat",
   "name": "This & That",
   "description": "A mod adding random things.",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "side": "universal",
   "initializer": "juuxel.thisandthat.ThisAndThat",
   "requires": {
@@ -11,7 +11,7 @@
       "version": ">=1.3.10-1"
     },
     "watereddown": {
-      "version": ">=0.2.1"
+      "version": ">=0.3.0"
     }
   },
   "mixins": {

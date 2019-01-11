@@ -1,10 +1,7 @@
 {
   predicate: {
     type: "block",
-    id: "minecraft:oak_slab",
-    state: {
-      type: "double"
-    }
+    id: "minecraft:oak_slab[type=double]"
   },
   output: [
     { type: "thisandthat:item", id: "minecraft:oak_slab", amount: 2 }

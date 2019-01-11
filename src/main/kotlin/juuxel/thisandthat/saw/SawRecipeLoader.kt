@@ -4,15 +4,17 @@
  */
 package juuxel.thisandthat.saw
 
+import com.mojang.brigadier.StringReader
 import juuxel.jay.JsonObject
 import juuxel.jay.Parser
+import juuxel.thisandthat.util.StateBlockProxy
+import net.minecraft.block.pattern.BlockProxy
+import net.minecraft.command.arguments.BlockStateArgumentType
 import net.minecraft.item.ItemStack
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceReloadListener
-import net.minecraft.state.property.Property
 import net.minecraft.tag.BlockTags
 import net.minecraft.util.Identifier
-import net.minecraft.util.registry.Registry
 import org.apache.logging.log4j.LogManager
 
 object SawRecipeLoader : ResourceReloadListener {
@@ -52,19 +54,14 @@ object SawRecipeLoader : ResourceReloadListener {
     @Suppress("UNCHECKED_CAST")
     private fun readPredicate(obj: JsonObject): SawPredicate? {
         val type = obj.string("type") ?: return null
-        val id = Identifier(obj.string("id") ?: return null)
+        val id = obj.string("id") ?: return null
 
         return when (type) {
-            "tag" -> {{ it.block.matches(BlockTags.getContainer()[id]) }}
+            "tag" -> {{ it.block.matches(BlockTags.getContainer()[Identifier(id)]) }}
             "block" -> {{
-                val state = obj.obj("state")?.asMap ?: emptyMap()
-                Registry.BLOCK.getId(it.block) == id && (state.isEmpty() || state.entries.all { (key, value) ->
-                    it.entries.any {
-                        it.key.getName() == key && (it.key as Property<in Comparable<Comparable<*>>>).getValueAsString(
-                            it.value as Comparable<Comparable<*>>
-                        ) == value
-                    }
-                })
+                BlockStateArgumentType.create().method_9654(StringReader(id)).method_9493(
+                    StateBlockProxy(it)
+                )
             }}
             else -> null
         }

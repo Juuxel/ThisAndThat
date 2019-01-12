@@ -14,8 +14,7 @@ import org.apache.logging.log4j.LogManager
  * A JSON5-based config type.
  */
 class Config(private val file: Path) {
-    @PublishedApi
-    internal lateinit var map: MutableMap<String, Any>
+    private lateinit var map: MutableMap<String, Any>
 
     private val logger = LogManager.getLogger()
     private var hasChanged = false
@@ -55,7 +54,7 @@ class Config(private val file: Path) {
      * ```
      */
     @Suppress("UNCHECKED_CAST")
-    inline operator fun <reified T : Any> get(location: String, defaultValue: T): T {
+    operator fun <T : Any> get(location: String, defaultValue: T): T {
         val parts = location.split('.')
         var targetMap: MutableMap<String, Any> = map
 

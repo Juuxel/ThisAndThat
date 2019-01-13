@@ -63,7 +63,10 @@ class Config(private val file: Path) {
                 throw IllegalStateException("$part in $location is not a map!")
         }
 
-        return targetMap.getOrPut(parts.last()) { defaultValue } as T
+        return targetMap.getOrPut(parts.last()) {
+            hasChanged = true
+            defaultValue
+        } as T
     }
 
     @Suppress("UNCHECKED_CAST")

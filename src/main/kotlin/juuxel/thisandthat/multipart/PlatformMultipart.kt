@@ -4,9 +4,7 @@
  */
 package juuxel.thisandthat.multipart
 
-import juuxel.thisandthat.util.BlockVariant
-import juuxel.thisandthat.util.ModMultipart
-import juuxel.thisandthat.util.MultipartUtils
+/*import juuxel.thisandthat.util.*
 import net.minecraft.block.Block
 import net.minecraft.block.enums.BlockHalf
 import net.minecraft.item.Item
@@ -42,6 +40,8 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
         val x: Int
         val z: Int
         val hitSide = context.facing
+        val hitX = context.hitX
+        val hitZ = context.hitZ
 
         when {
             hitSide.axis.isHorizontal -> {
@@ -57,13 +57,13 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
                     else -> 0f
                 }
 
-                x = (context.hitX + xOffset).roundToInt() % 2
-                z = (context.hitZ + zOffset).roundToInt() % 2
+                x = (hitX + xOffset).roundToInt() % 2
+                z = (hitZ + zOffset).roundToInt() % 2
             }
 
             else -> {
-                x = context.hitX.roundToInt() % 2
-                z = context.hitZ.roundToInt() % 2
+                x = hitX.roundToInt() % 2
+                z = hitZ.roundToInt() % 2
             }
         }
 
@@ -161,4 +161,4 @@ class PlatformMultipart(variant: BlockVariant) : Multipart(), ModMultipart {
             Direction.Axis.Y -> throw IllegalArgumentException("no y axis pls")
         }
     }
-}
+}*/

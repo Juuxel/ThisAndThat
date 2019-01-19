@@ -12,6 +12,7 @@ import net.fabricmc.api.Environment
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
+import net.minecraft.entity.VerticalEntityPosition
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemPlacementContext
@@ -45,7 +46,7 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Fluidloggabl
 
     override fun hasRandomTicks(p0: BlockState?) = true
     override fun getTickRate(p0: ViewableWorld?) = 3
-    override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = shape
+    override fun getOutlineShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?) = shape
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
         val state = context.world.getFluidState(context.pos)

@@ -4,20 +4,28 @@
  */
 package juuxel.thisandthat.lib
 
-import juuxel.thisandthat.util.Config
-import net.fabricmc.loader.FabricLoader
-import java.nio.file.Paths
+import io.github.cottonmc.cotton.config.ConfigManager
+import io.github.cottonmc.cotton.config.annotations.ConfigFile
+import io.github.cottonmc.repackage.blue.endless.jankson.Comment
 
-object ModConfig {
-    val config = Config(
-        Paths.get(
-            FabricLoader.INSTANCE.configDirectory.absolutePath,
-            "thisandthat.json5"
-        )
-    ).apply { load() }
+@ConfigFile(name = "ThisAndThat")
+class ModConfig {
+    @JvmField var items = Items()
+    @JvmField var modules = Modules()
 
-    val enderFeathers = config["items.enderFeathers", true]
-    val multiparts = config["modules.multipart", true]
+    class Items {
+        @JvmField var enderFeathers = true
+    }
 
-    fun init() {}
+    class Modules {
+        @Comment("If true, enables multiparts.")
+        @JvmField var multiparts = true
+    }
+
+    companion object {
+        @JvmStatic
+        val instance by lazy {
+            ConfigManager.loadConfig(ModConfig::class.java)
+        }
+    }
 }

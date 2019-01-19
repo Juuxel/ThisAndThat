@@ -10,6 +10,7 @@ import juuxel.watereddown.api.FluidProperty
 import juuxel.watereddown.api.Fluidloggable
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
+import net.minecraft.entity.VerticalEntityPosition
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemPlacementContext
@@ -30,7 +31,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
     }
 
     @Suppress("OverridingDeprecatedMember")
-    override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?): VoxelShape =
+    override fun getOutlineShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?): VoxelShape =
         VoxelShapes.union(postShape, platformShape)
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {

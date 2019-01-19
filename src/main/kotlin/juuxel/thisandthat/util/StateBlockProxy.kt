@@ -5,10 +5,10 @@
 package juuxel.thisandthat.util
 
 import net.minecraft.block.BlockState
-import net.minecraft.block.pattern.BlockProxy
+import net.minecraft.block.pattern.CachedBlockPosition
 import net.minecraft.util.math.BlockPos
 
-class StateBlockProxy(private val state: BlockState) : BlockProxy(null, BlockPos.ORIGIN, false) {
+class StateBlockProxy(private val state: BlockState) : CachedBlockPosition(null, BlockPos.ORIGIN, false) {
     override fun getBlockEntity() = null
     override fun getBlockState() = state
 }

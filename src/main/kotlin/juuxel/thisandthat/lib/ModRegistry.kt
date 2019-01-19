@@ -5,13 +5,13 @@
 package juuxel.thisandthat.lib
 
 import juuxel.thisandthat.item.ModBlockItem
-import juuxel.thisandthat.item.ModMultipartItem
+//import juuxel.thisandthat.item.ModMultipartItem
 import juuxel.thisandthat.util.ModBlock
 import juuxel.thisandthat.util.ModContent
 import juuxel.thisandthat.util.ModMultipart
 import net.minecraft.util.Identifier
 import net.minecraft.util.registry.Registry
-import net.shadowfacts.simplemultipart.SimpleMultipart
+//import net.shadowfacts.simplemultipart.SimpleMultipart
 
 abstract class ModRegistry {
     @Suppress("UNCHECKED_CAST")
@@ -32,11 +32,11 @@ abstract class ModRegistry {
     }
 
     protected fun <T : ModMultipart> registerMultipart(content: T): T {
-        register(SimpleMultipart.MULTIPART, content)
-
-        if (content.registerItem)
-            Registry.register(Registry.ITEM, Identifier("thisandthat", content.name), ModMultipartItem(content))
-
+//        register(SimpleMultipart.MULTIPART, content)
+//
+//        if (content.registerItem)
+//            Registry.register(Registry.ITEM, Identifier("thisandthat", content.name), ModMultipartItem(content))
+//
         return content
     }
 }

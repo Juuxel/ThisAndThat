@@ -7,20 +7,18 @@ package juuxel.thisandthat.saw
 import com.mojang.brigadier.StringReader
 import juuxel.jay.JsonObject
 import juuxel.jay.Parser
+import juuxel.thisandthat.ThisAndThat.logger
 import juuxel.thisandthat.util.StateBlockProxy
-import net.minecraft.block.pattern.BlockProxy
-import net.minecraft.command.arguments.BlockStateArgumentType
+import net.minecraft.command.arguments.BlockArgumentType
 import net.minecraft.item.ItemStack
 import net.minecraft.resource.ResourceManager
 import net.minecraft.resource.ResourceReloadListener
 import net.minecraft.tag.BlockTags
 import net.minecraft.util.Identifier
-import org.apache.logging.log4j.LogManager
 
 object SawRecipeLoader : ResourceReloadListener {
     private const val directory = "saw_recipes"
     private val suffixes = arrayOf(".json5", ".json")
-    private val logger = LogManager.getLogger()
 
     override fun onResourceReload(manager: ResourceManager) {
         SawRecipes.clear()
@@ -35,13 +33,13 @@ object SawRecipeLoader : ResourceReloadListener {
             SawRecipes.register(
                 readRecipe(Parser.parseObj(it.inputStream.bufferedReader().lineSequence().joinToString(separator = "\n")))
                     ?: run {
-                        logger.error("[ThisAndThat] Could not load saw recipe ${it.id}")
+                        logger.error("Could not load saw recipe ${it.id}")
                         return@forEach
                     }
             )
         }
 
-        logger.info("[ThisAndThat] Loaded ${SawRecipes.recipes.size} saw recipes")
+        logger.info("Loaded ${SawRecipes.recipes.size} saw recipes")
     }
 
     private fun readRecipe(obj: JsonObject): SawRecipe? {
@@ -59,7 +57,7 @@ object SawRecipeLoader : ResourceReloadListener {
         return when (type) {
             "tag" -> {{ it.block.matches(BlockTags.getContainer()[Identifier(id)]) }}
             "block" -> {{
-                BlockStateArgumentType.create().method_9654(StringReader(id)).method_9493(
+                BlockArgumentType.create().method_9654(StringReader(id)).test(
                     StateBlockProxy(it)
                 )
             }}

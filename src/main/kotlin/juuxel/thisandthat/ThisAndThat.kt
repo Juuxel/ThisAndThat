@@ -4,16 +4,20 @@
  */
 package juuxel.thisandthat
 
+import io.github.cottonmc.cotton.logging.Ansi
+import io.github.cottonmc.cotton.logging.ModLogger
 import juuxel.thisandthat.lib.*
 import net.fabricmc.api.ModInitializer
 
 object ThisAndThat : ModInitializer {
+    internal val logger = ModLogger(ThisAndThat::class.java, "ThisAndThat").apply {
+        setPrefixFormat(Ansi.Cyan.and(Ansi.Bold))
+    }
+
     override fun onInitialize() {
-        ModConfig.init()
         ModBlocks.init()
         ModItems.init()
         ModMultiparts.init()
         ModTags.init()
-        ModConfig.config.save()
     }
 }

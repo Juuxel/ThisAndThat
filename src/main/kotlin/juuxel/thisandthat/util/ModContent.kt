@@ -7,10 +7,10 @@ package juuxel.thisandthat.util
 import net.minecraft.block.Block
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.item.Item
-import net.minecraft.util.math.BlockPos
-import net.minecraft.world.ViewableWorld
-import net.shadowfacts.simplemultipart.multipart.Multipart
-import net.shadowfacts.simplemultipart.multipart.MultipartState
+//import net.minecraft.util.math.BlockPos
+//import net.minecraft.world.ViewableWorld
+//import net.shadowfacts.simplemultipart.multipart.Multipart
+//import net.shadowfacts.simplemultipart.multipart.MultipartState
 
 interface ModContent<out T> {
     val name: String
@@ -30,6 +30,8 @@ interface ModBlock : BlockLikeContent<Block> {
     val blockEntityType: BlockEntityType<*>? get() = null
 }
 
-interface ModMultipart : BlockLikeContent<Multipart> {
-    fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) = false
-}
+interface ModMultipart : BlockLikeContent<Block>
+
+//interface ModMultipart : BlockLikeContent<Multipart> {
+//    fun canSupportTorches(state: MultipartState, world: ViewableWorld, pos: BlockPos) = false
+//}

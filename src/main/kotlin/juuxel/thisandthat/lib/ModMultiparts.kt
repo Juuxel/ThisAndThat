@@ -4,18 +4,17 @@
  */
 package juuxel.thisandthat.lib
 
-import juuxel.thisandthat.multipart.PlatformMultipart
-import juuxel.thisandthat.multipart.PostMultipart
+import juuxel.thisandthat.multipart.*
 import juuxel.thisandthat.util.BlockVariant
 
 object ModMultiparts : ModRegistry() {
     fun init() {
-        if (!exists("net.shadowfacts.simplemultipart.SimpleMultipart") || !ModConfig.multiparts) return
+        if (!exists("net.shadowfacts.simplemultipart.SimpleMultipart") || !ModConfig.instance.modules.multiparts) return
 
-        for (variant in BlockVariant.Wood.values()) {
-            registerMultipart(PostMultipart(variant))
-            registerMultipart(PlatformMultipart(variant))
-        }
+//        for (variant in BlockVariant.Wood.values()) {
+//            registerMultipart(PostMultipart(variant))
+//            registerMultipart(PlatformMultipart(variant))
+//        }
     }
 
     private fun exists(clazz: String): Boolean =

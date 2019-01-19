@@ -4,7 +4,7 @@
  */
 package juuxel.thisandthat.item
 
-import juuxel.thisandthat.util.ModContent
+/*import juuxel.thisandthat.util.ModContent
 import juuxel.thisandthat.util.ModMultipart
 import net.minecraft.client.item.TooltipOptions
 import net.minecraft.item.ItemStack
@@ -38,4 +38,4 @@ class ModMultipartItem(multipart: ModMultipart) :
                 it.color = TextFormat.DARK_GRAY
             })
     }
-}
+}*/

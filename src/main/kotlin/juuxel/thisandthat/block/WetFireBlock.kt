@@ -12,9 +12,11 @@ import net.minecraft.block.Block
 import net.minecraft.block.BlockRenderLayer
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
+import net.minecraft.entity.VerticalEntityPosition
 import net.minecraft.item.ItemPlacementContext
 import net.minecraft.state.StateFactory
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 import net.minecraft.world.ViewableWorld
@@ -30,7 +32,7 @@ class WetFireBlock : Block(Settings.copy(Blocks.FIRE)), ModBlock, Fluidloggable 
         defaultState = stateFactory.defaultState.with(FluidProperty.FLUID, FluidProperty.EMPTY)
     }
 
-    override fun getBoundingShape(state: BlockState?, view: BlockView?, pos: BlockPos?) =
+    override fun getOutlineShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?) =
         VoxelShapes.empty()
 
     override fun canPlaceAt(state: BlockState?, world: ViewableWorld, pos: BlockPos) =
@@ -66,7 +68,8 @@ class WetFireBlock : Block(Settings.copy(Blocks.FIRE)), ModBlock, Fluidloggable 
     }
 
     override fun getRenderLayer() = BlockRenderLayer.CUTOUT
-    override fun canCollideWith() = false
+    override fun getCollisionShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?) =
+        VoxelShapes.empty()
 
     override fun getTickRate(world: ViewableWorld?) =
         Blocks.FIRE.getTickRate(world)

@@ -24,7 +24,7 @@ object ModItems : ModRegistry() {
         register(Registry.ITEM, ModItem("logo", Item.Settings()))
         register(Registry.ITEM, SawItem())
 
-        if (ModConfig.enderFeathers)
+        if (ModConfig.instance.items.enderFeathers)
             enderFeather = register(Registry.ITEM, EnderFeatherItem())
     }
 }

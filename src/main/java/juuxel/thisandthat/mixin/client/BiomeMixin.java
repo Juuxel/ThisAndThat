@@ -7,37 +7,36 @@ package juuxel.thisandthat.mixin.client;
 import juuxel.thisandthat.lib.ModConfig;
 import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(Biome.class)
 public class BiomeMixin {
-    @ModifyArg(method = "getSkyColor", index = 0, at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;hsvToRgb(FFF)I"))
+    @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 0.62222224f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkyHue(float hue) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
 
         if (tweaks.changeSkyColor)
-            return (hue - 0.62222224F + tweaks.skyHue) % 360f;
+            return tweaks.skyHue % 360f;
         else
             return hue;
     }
 
-    @ModifyArg(method = "getSkyColor", index = 1, at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;hsvToRgb(FFF)I"))
+    @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 0.5f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkySaturation(float saturation) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
 
         if (tweaks.changeSkyColor)
-            return (saturation - 0.5F + tweaks.skySaturation) % 360f;
+            return tweaks.skySaturation % 360f;
         else
             return saturation;
     }
 
-    @ModifyArg(method = "getSkyColor", index = 2, at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;hsvToRgb(FFF)I"))
+    @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 1f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkyBrightness(float brightness) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
 
         if (tweaks.changeSkyColor)
-            return (brightness - 1F + tweaks.skyBrightness) % 360f;
+            return tweaks.skyBrightness % 360f;
         else
             return brightness;
     }

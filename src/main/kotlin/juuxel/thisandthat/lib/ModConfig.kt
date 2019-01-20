@@ -7,6 +7,7 @@ package juuxel.thisandthat.lib
 import io.github.cottonmc.cotton.config.ConfigManager
 import io.github.cottonmc.cotton.config.annotations.ConfigFile
 import io.github.cottonmc.repackage.blue.endless.jankson.Comment
+import juuxel.thisandthat.util.CloudColorMode
 
 @ConfigFile(name = "ThisAndThat")
 class ModConfig {
@@ -45,8 +46,8 @@ class ModConfig {
         @Comment("The blue cloud color component modifier in a 0.0-1.0 RGB color. Default: 0")
         @JvmField var cloudBlueModifier = 0.0
 
-        @Comment("If true, modifies the cloud color. Default: false")
-        @JvmField var changeCloudColor = false
+        @Comment("The cloud color mode. Values: [Modify, Replace, Vanilla], default: Vanilla")
+        @JvmField var cloudColorMode = CloudColorMode.Vanilla
     }
 
     companion object {

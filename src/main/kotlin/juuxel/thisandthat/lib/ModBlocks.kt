@@ -32,6 +32,7 @@ object ModBlocks : ModRegistry() {
         ryeCrop = registerBlock(RyeCropBlock())
         registerBlock(TankBlock())
         wetFire = registerBlock(WetFireBlock())
+        registerBlock(PaperBoxBlock())
     }
 
     private fun registerWallBlock(ground: () -> ModBlock, wall: (Block.Settings) -> ModBlock) {

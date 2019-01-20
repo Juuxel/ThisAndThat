@@ -49,6 +49,7 @@
   "block.thisandthat.tank.desc": "Stores fluids",
   "block.thisandthat.prismarine_torch": "Prismarine Torch",
   "block.thisandthat.prismarine_torch.desc": "Burns underwater",
+  "block.thisandthat.paper_box": "Paper Box",
   "_2": "Items",
   "item.thisandthat.stone_rod": "Stone Rod",
   "item.thisandthat.stone_rod.desc": "Crafting ingredient",
@@ -107,7 +108,9 @@
   "advancements.thisandthat.rye_seeds.desc": "Find rye seeds from grass",
   "advancements.thisandthat.ender_feather": "Levitation",
   "advancements.thisandthat.ender_feather.desc": "Craft an ender feather",
-  "_5": "Misc",
+  "_5": "Containers",
+  "container.thisandthat.paper_box": "Paper Box",
+  "_6": "Misc",
   "desc.thisandthat.waterloggable": "Waterloggable",
   "desc.thisandthat.multipart": "Multipart"
 }

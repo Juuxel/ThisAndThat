@@ -4,7 +4,7 @@
   "description": "A mod adding random things.",
   "version": "0.2.0",
   "side": "universal",
-  "initializer": "juuxel.thisandthat.ThisAndThat",
+  "initializers": ["juuxel.thisandthat.ThisAndThat", "juuxel.thisandthat.ThisAndThat$Client"],
   "requires": {
     "fabric": "*",
     "fabric-language-kotlin": {

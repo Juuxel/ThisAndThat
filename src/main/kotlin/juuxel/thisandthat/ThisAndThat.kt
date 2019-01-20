@@ -7,6 +7,7 @@ package juuxel.thisandthat
 import io.github.cottonmc.cotton.logging.Ansi
 import io.github.cottonmc.cotton.logging.ModLogger
 import juuxel.thisandthat.lib.*
+import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.ModInitializer
 
 object ThisAndThat : ModInitializer {
@@ -19,5 +20,12 @@ object ThisAndThat : ModInitializer {
         ModItems.init()
         ModMultiparts.init()
         ModTags.init()
+        ModContainers.init()
+    }
+
+    object Client : ClientModInitializer {
+        override fun onInitializeClient() {
+            ModContainers.initClient()
+        }
     }
 }

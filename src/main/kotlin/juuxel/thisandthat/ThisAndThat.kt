@@ -10,7 +10,7 @@ import juuxel.thisandthat.block.WetFireBlock
 import juuxel.thisandthat.lib.*
 import net.fabricmc.api.ClientModInitializer
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.fabric.api.events.LootTableLoadingCallback
+//import net.fabricmc.fabric.api.events.LootTableLoadingCallback
 import net.fabricmc.fabric.events.PlayerInteractionEvent
 import net.minecraft.util.ActionResult
 import net.minecraft.world.loot.ConstantLootTableRange
@@ -39,16 +39,16 @@ object ThisAndThat : ModInitializer {
                 ActionResult.PASS
             }
         )
-        LootTableLoadingCallback.REGISTRY.register(LootTableLoadingCallback { id, supplier ->
-            if (id.toString() == "minecraft:blocks/grass") {
-                supplier.addPools(
-                    LootPool.create()
-                        .withEntry(ItemEntry.builder(ModItems.ryeSeeds.unwrap()))
-                        .withRolls(ConstantLootTableRange.create(1))
-                        .build()
-                )
-            }
-        })
+//        LootTableLoadingCallback.REGISTRY.register(LootTableLoadingCallback { id, supplier ->
+//            if (id.toString() == "minecraft:blocks/grass") {
+//                supplier.addPools(
+//                    LootPool.create()
+//                        .withEntry(ItemEntry.builder(ModItems.ryeSeeds.unwrap()))
+//                        .withRolls(ConstantLootTableRange.create(1))
+//                        .build()
+//                )
+//            }
+//        })
     }
 
     object Client : ClientModInitializer {

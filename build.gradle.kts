@@ -56,8 +56,8 @@ dependencies {
     minecraft("com.mojang:minecraft:19w05a")
     mappings("net.fabricmc:yarn:19w05a.6")
     modCompile("net.fabricmc:fabric-loader:0.3.2.96")
-//    modCompile("net.fabricmc:fabric:0.1.5.88")
-    modFileCompile("fabric-0.1.5.local-dev")
+    modCompile("net.fabricmc:fabric:0.1.5.88")
+//    modFileCompile("fabric-0.1.5.local-dev")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-29")
 
     // Other libraries

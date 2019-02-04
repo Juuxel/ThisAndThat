@@ -35,7 +35,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
         VoxelShapes.union(postShape, platformShape)
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
@@ -44,7 +44,7 @@ class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, 
     }
 
     companion object {
-        internal val postShape = Block.createCubeShape(6.0, 0.0, 6.0, 10.0, 16.0, 10.0)
-        private val platformShape = Block.createCubeShape(0.0, 14.0, 0.0, 16.0, 16.0, 16.0)
+        internal val postShape = Block.createCuboidShape(6.0, 0.0, 6.0, 10.0, 16.0, 10.0)
+        private val platformShape = Block.createCuboidShape(0.0, 14.0, 0.0, 16.0, 16.0, 16.0)
     }
 }

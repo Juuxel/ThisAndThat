@@ -49,7 +49,7 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Fluidloggabl
     override fun getOutlineShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?) = shape
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
@@ -58,6 +58,6 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock, Fluidloggabl
     }
 
     companion object {
-        private val shape = Block.createCubeShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
+        private val shape = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
     }
 }

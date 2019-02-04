@@ -17,7 +17,7 @@ import net.minecraft.util.ActionResult
 class PrismarineCoalItem : ModItem("prismarine_coal", Settings().itemGroup(ItemGroup.MISC), hasDescription = true) {
     override fun useOnBlock(context: ItemUsageContext): ActionResult {
         val world = context.world
-        val pos = context.pos.offset(context.facing)
+        val pos = context.blockPos.offset(context.facing)
 
         return if (ModBlocks.wetFire.defaultState.canPlaceAt(world, pos)) {
             world.playSound(context.player, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCK, 1f, 1f)

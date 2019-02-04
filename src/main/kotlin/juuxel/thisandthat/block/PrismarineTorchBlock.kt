@@ -26,7 +26,7 @@ class PrismarineTorchBlock : TorchBlock(settings), ModBlock, Fluidloggable {
     }
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return super.getPlacementState(context)?.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
@@ -45,7 +45,7 @@ class PrismarineTorchBlock : TorchBlock(settings), ModBlock, Fluidloggable {
         }
 
         override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-            val state = context.world.getFluidState(context.pos)
+            val state = context.world.getFluidState(context.blockPos)
             return super.getPlacementState(context)?.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
         }
 

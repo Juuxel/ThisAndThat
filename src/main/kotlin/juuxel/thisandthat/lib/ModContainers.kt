@@ -5,7 +5,7 @@
 package juuxel.thisandthat.lib
 
 import juuxel.thisandthat.container.SingleSlotContainer
-import juuxel.thisandthat.container.gui.SingleSlotContainerGui
+import juuxel.thisandthat.container.gui.SingleSlotContainerScreen
 import net.fabricmc.fabric.api.client.gui.GuiProviderRegistry
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry
 import net.minecraft.block.entity.HopperBlockEntity
@@ -31,9 +31,9 @@ object ModContainers {
             val pos = buf.readBlockPos()
             val inventory = HopperBlockEntity.getInventoryAt(player.world, pos)
 
-            if (inventory != null)
-                SingleSlotContainerGui(syncId, inventory, player, paperBox.path)
-            else
+            /*if (inventory != null)
+                SingleSlotContainerScreen(syncId, inventory, player, paperBox.path)
+            else*/
                 null
         }
     }

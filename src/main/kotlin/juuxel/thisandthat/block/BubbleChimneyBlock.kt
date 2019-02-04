@@ -20,7 +20,6 @@ import net.minecraft.item.ItemPlacementContext
 import net.minecraft.particle.ParticleTypes
 import net.minecraft.state.StateFactory
 import net.minecraft.util.math.BlockPos
-import net.minecraft.util.shape.VoxelShape
 import net.minecraft.world.BlockView
 import net.minecraft.world.ViewableWorld
 import net.minecraft.world.World
@@ -53,7 +52,7 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Fl
     override fun getOutlineShape(state: BlockState?, view: BlockView?, pos: BlockPos?, vep: VerticalEntityPosition?) = shape
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
     }
 
@@ -62,6 +61,6 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Fl
     }
 
     companion object {
-        private val shape = Block.createCubeShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
+        private val shape = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
     }
 }

@@ -16,7 +16,7 @@ import net.minecraft.util.ActionResult
 class SawItem : ModItem("saw", Settings().itemGroup(ItemGroup.TOOLS).durability(80), hasDescription = true) {
     override fun useOnBlock(context: ItemUsageContext): ActionResult {
         val world = context.world
-        val pos = context.pos
+        val pos = context.blockPos
         val output = SawRecipes.getOutput(world.getBlockState(pos))
 
         if (output.isEmpty()) return super.useOnBlock(context)

@@ -30,7 +30,7 @@ class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, Fluidloggab
     override fun getPlacementState(
         context: ItemPlacementContext
     ): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return super.getPlacementState(context)?.apply {
             (state.fluid as? BaseFluid)?.let {
                 with(FluidProperty.FLUID, FluidProperty.Wrapper(it.still))

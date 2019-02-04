@@ -30,8 +30,10 @@ public class MinecraftServerMixin {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onConstruct(File f, Proxy p, DataFixer df, ServerCommandManager scm,
-                             YggdrasilAuthenticationService yas, MinecraftSessionService mss, GameProfileRepository r,
-                             UserCache c, WorldGenerationProgressListenerFactory f2, CallbackInfo info) {
+                             YggdrasilAuthenticationService yas, MinecraftSessionService mss,
+                             GameProfileRepository gpr, UserCache uc,
+                             WorldGenerationProgressListenerFactory w, String s,
+                             CallbackInfo info) {
         dataManager.addListener(SawRecipeLoader.INSTANCE);
     }
 }

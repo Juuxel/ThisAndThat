@@ -4,16 +4,14 @@
  */
 package juuxel.thisandthat.mixin;
 
-/*import juuxel.thisandthat.lib.ModConfig;
-import juuxel.thisandthat.util.ModMultipart;
+import juuxel.thisandthat.util.TTVoxelShapes;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;*/
+import net.minecraft.block.BlockState;
 import net.minecraft.block.TorchBlock;
-/*import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BoundingBox;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.ViewableWorld;
-import net.shadowfacts.simplemultipart.container.MultipartContainer;
-import org.apache.logging.log4j.LogManager;*/
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -22,10 +20,19 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(TorchBlock.class)
 public class TorchPlacementMixin {
-    /*@Inject(method = "canPlaceAt", at = @At("RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILHARD)
+    private static final BoundingBox TOP_BOX = Block.createCuboidShape(6, 15.5, 6, 10, 16, 10).getBoundingBox();
+
+    @Inject(method = "canPlaceAt", at = @At("RETURN"), cancellable = true, locals = LocalCapture.CAPTURE_FAILHARD)
     private void onCanPlaceAt(BlockState state, ViewableWorld world, BlockPos pos, CallbackInfoReturnable<Boolean> info,
                               BlockPos downPos, BlockState downState, Block downBlock) {
-        if (!ModConfig.getInstance().modules.multiparts) return;
+        if (!info.getReturnValue() && !"minecraft".equals(Registry.BLOCK.getId(downBlock).getNamespace())) {
+            info.setReturnValue(TTVoxelShapes.containedIn(
+                downState.getCollisionShape(world, downPos), TOP_BOX
+            ));
+        }
+
+        // TODO Is this needed?
+        /*if (!ModConfig.getInstance().modules.multiparts) return;
 
         try {
             BlockEntity entity = world.getBlockEntity(downPos);
@@ -39,6 +46,6 @@ public class TorchPlacementMixin {
             }
         } catch (NullPointerException e) {
             LogManager.getLogger().debug("[ThisAndThat] NPE during torch placement");
-        }
-    }*/
+        }*/
+    }
 }

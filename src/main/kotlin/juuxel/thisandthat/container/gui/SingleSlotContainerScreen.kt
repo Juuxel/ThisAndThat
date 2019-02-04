@@ -6,21 +6,23 @@ package juuxel.thisandthat.container.gui
 
 import com.mojang.blaze3d.platform.GlStateManager
 import juuxel.thisandthat.container.SingleSlotContainer
-import net.minecraft.client.gui.ContainerGui
+import net.minecraft.client.gui.ContainerScreen
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
 import net.minecraft.text.TranslatableTextComponent
 import net.minecraft.util.Identifier
 
-class SingleSlotContainerGui(syncId: Int, inventory: Inventory, player: PlayerEntity, id: String) :
-    ContainerGui<SingleSlotContainer>(
+class SingleSlotContainerScreen(syncId: Int, inventory: Inventory, player: PlayerEntity, id: String) :
+    ContainerScreen<SingleSlotContainer>(
         SingleSlotContainer(syncId, inventory, player.inventory),
         player.inventory,
         TranslatableTextComponent("container.thisandthat.$id")
     ) {
+    private val background = Identifier("thisandthat", "textures/gui/$id.png")
+
     override fun drawBackground(v: Float, i: Int, i1: Int) {
         GlStateManager.color4f(1f, 1f, 1f, 1f)
-        client.textureManager.bindTexture(BACKGROUND)
+        client.textureManager.bindTexture(background)
         drawTexturedRect(left, top, 0, 0, containerWidth, containerHeight)
     }
 
@@ -38,9 +40,5 @@ class SingleSlotContainerGui(syncId: Int, inventory: Inventory, player: PlayerEn
             (this.containerHeight - 96 + 2).toFloat(),
             4210752
         )
-    }
-
-    companion object {
-        val BACKGROUND = Identifier("thisandthat", "textures/gui/single_slot.png")
     }
 }

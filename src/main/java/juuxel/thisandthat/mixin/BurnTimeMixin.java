@@ -15,9 +15,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
 
+// TODO: Remove
 @Mixin(AbstractFurnaceBlockEntity.class)
 public class BurnTimeMixin {
-    @Inject(method = "createBurnableMap", at = @At("RETURN"))
+    @Inject(method = "createFuelTimeMap", at = @At("RETURN"))
     private static void addBurnTimes(CallbackInfoReturnable<Map<Item, Integer>> info) {
         Map<Item, Integer> map = info.getReturnValue();
         map.put(ModItems.INSTANCE.getPrismarineCoal().unwrap(), map.get(Items.COAL) * 3 / 2);

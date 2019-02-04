@@ -57,10 +57,10 @@ class EnderFeatherItem : ModItem("ender_feather", Settings().itemGroup(ItemGroup
         return super.use(world, player, hand)
     }
 
-    override fun hasEnchantmentGlow(stack: ItemStack) =
+    override fun hasEnchantmentGlint(stack: ItemStack) =
         stack.tag?.getBoolean("activated") ?: false
 
-    override fun onUpdate(stack: ItemStack, world: World, entity: Entity, p3: Int, p4: Boolean) {
+    override fun onEntityTick(stack: ItemStack, world: World, entity: Entity, p3: Int, p4: Boolean) {
         if (entity !is PlayerEntity) return
 
         if (world is ServerWorld && entity.abilities.flying && stack.tag?.getBoolean("activated") == true && stack.damage < durability && random.nextInt(10) == 0) {

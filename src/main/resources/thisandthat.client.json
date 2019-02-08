@@ -1,6 +1,7 @@
 {
   "required": true,
   "package": "juuxel.thisandthat.mixin.client",
+  "plugin": "juuxel.thisandthat.TTMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "BiomeMixin",

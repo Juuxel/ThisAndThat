@@ -4,13 +4,16 @@
  */
 package juuxel.thisandthat.lib
 
-import io.github.cottonmc.cotton.config.ConfigManager
+import com.google.gson.Gson
 import io.github.cottonmc.cotton.config.annotations.ConfigFile
 import io.github.cottonmc.repackage.blue.endless.jankson.Comment
+import juuxel.thisandthat.ThisAndThat
 import juuxel.thisandthat.util.CloudColorMode
+import net.fabricmc.loader.FabricLoader
+import java.io.File
 
 @ConfigFile(name = "ThisAndThat")
-class ModConfig {
+class _ModConfig {
     @JvmField var items = Items()
     @JvmField var modules = Modules()
     @JvmField var tweaks = Tweaks()
@@ -53,7 +56,9 @@ class ModConfig {
     companion object {
         @JvmStatic
         val instance by lazy {
-            ConfigManager.loadConfig(ModConfig::class.java)
+            ThisAndThat.logger.info("Loading config (GSON)")
+//            ConfigManager.loadConfig(ModConfig::class.java)
+            Gson().fromJson(File(FabricLoader.INSTANCE.configDirectory, "ThisAndThat.conf").reader(), _ModConfig::class.java)
         }
     }
 }

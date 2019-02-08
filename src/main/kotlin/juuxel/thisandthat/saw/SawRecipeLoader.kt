@@ -4,9 +4,9 @@
  */
 package juuxel.thisandthat.saw
 
+import blue.endless.jankson.Jankson
+import blue.endless.jankson.JsonObject
 import com.mojang.brigadier.StringReader
-import juuxel.jay.JsonObject
-import juuxel.jay.Parser
 import juuxel.thisandthat.ThisAndThat.logger
 import juuxel.thisandthat.util.StateBlockProxy
 import net.minecraft.command.arguments.BlockArgumentType
@@ -18,7 +18,8 @@ import net.minecraft.util.Identifier
 
 object SawRecipeLoader : ResourceReloadListener {
     private const val directory = "saw_recipes"
-    private val suffixes = arrayOf(".json5", ".json")
+    private val suffixes = arrayOf(".json5", ".json", ".hjson")
+    private val jankson = Jankson.builder().build()
 
     override fun onResourceReload(manager: ResourceManager) {
         SawRecipes.clear()
@@ -31,7 +32,7 @@ object SawRecipeLoader : ResourceReloadListener {
             false
         }.map(manager::getResource).forEach {
             SawRecipes.register(
-                readRecipe(Parser.parseObj(it.inputStream.bufferedReader().lineSequence().joinToString(separator = "\n")))
+                readRecipe(jankson.load(it.inputStream))
                     ?: run {
                         logger.error("Could not load saw recipe ${it.id}")
                         return@forEach
@@ -43,16 +44,16 @@ object SawRecipeLoader : ResourceReloadListener {
     }
 
     private fun readRecipe(obj: JsonObject): SawRecipe? {
-        val transform = obj.list("output")?.let(::readTransform) ?: return null
-        val predicate = obj.obj("predicate")?.let(::readPredicate) ?: return null
+        val transform = obj[List::class.java, "output"]?.let(::readTransform) ?: return null
+        val predicate = obj.getObject("predicate")?.let(::readPredicate) ?: return null
 
         return SawRecipe(predicate, transform)
     }
 
     @Suppress("UNCHECKED_CAST")
     private fun readPredicate(obj: JsonObject): SawPredicate? {
-        val type = obj.string("type") ?: return null
-        val id = obj.string("id") ?: return null
+        val type = obj[String::class.java, "type"] ?: return null
+        val id = obj[String::class.java, "id"] ?: return null
 
         return when (type) {
             "tag" -> {{ it.block.matches(BlockTags.getContainer()[Identifier(id)]) }}
@@ -66,15 +67,15 @@ object SawRecipeLoader : ResourceReloadListener {
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun readTransform(list: List<Any>): SawTransform? {
+    private fun readTransform(list: List<*>): SawTransform? {
         val functions: List<(() -> List<ItemStack>)?> = list.map {
-            val obj = (it as? Map<String, Any> ?: return@map null).let(::JsonObject)
-            val id = Identifier(obj.string("id") ?: return@map null)
-            val amount = obj.int("amount") ?: 1
-            val type = Identifier(obj.string("type") ?: return@map null)
+            val obj = (it as? Map<String, Any> ?: return@map null).let(jankson::toJson) as? JsonObject ?: return null
+            val id = Identifier(obj[String::class.java, "id"] ?: return@map null)
+            val amount = obj[Int::class.javaObjectType, "amount"] ?: 1
+            val type = Identifier(obj[String::class.java, "type"] ?: return@map null)
 
             return@map {
-                SawOutputType[type].getOutput(SawOutputType.Context(id, amount, obj.asMap))
+                SawOutputType[type].getOutput(SawOutputType.Context(id, amount, obj))
             }
         }
 

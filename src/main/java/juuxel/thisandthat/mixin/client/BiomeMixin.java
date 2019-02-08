@@ -14,30 +14,18 @@ public class BiomeMixin {
     @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 0.62222224f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkyHue(float hue) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
-
-        if (tweaks.changeSkyColor)
-            return tweaks.skyHue % 360f;
-        else
-            return hue;
+        return tweaks.skyHue % 360f;
     }
 
     @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 0.5f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkySaturation(float saturation) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
-
-        if (tweaks.changeSkyColor)
-            return tweaks.skySaturation % 360f;
-        else
-            return saturation;
+        return tweaks.skySaturation % 360f;
     }
 
     @ModifyConstant(method = "getSkyColor", constant = @Constant(floatValue = 1f), slice = @Slice(from = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F")))
     private float modifySkyBrightness(float brightness) {
         ModConfig.Tweaks tweaks = ModConfig.getInstance().tweaks;
-
-        if (tweaks.changeSkyColor)
-            return tweaks.skyBrightness % 360f;
-        else
-            return brightness;
+        return tweaks.skyBrightness % 360f;
     }
 }

@@ -9,7 +9,7 @@ import juuxel.thisandthat.util.BlockVariant
 
 object ModMultiparts : ModRegistry() {
     fun init() {
-        if (!exists("net.shadowfacts.simplemultipart.SimpleMultipart") || !ModConfig.instance.modules.multiparts) return
+        if (!exists("net.shadowfacts.simplemultipart.SimpleMultipart") || !ModConfig.getInstance().modules.multiparts) return
 
 //        for (variant in BlockVariant.Wood.values()) {
 //            registerMultipart(PostMultipart(variant))

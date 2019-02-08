@@ -20,8 +20,9 @@ base {
 repositories {
     maven(url = "https://maven.shadowfacts.net")
     mavenCentral()
-    maven(url = "https://jitpack.io")
+//    maven(url = "https://jitpack.io")
     maven(url = "http://server.bbkr.space:8081/artifactory/libs-snapshot/") // Cotton
+    maven(url = "https://repo.elytradev.com") // Jankson
 
     flatDir {
         dirs("libs")
@@ -57,21 +58,21 @@ dependencies {
     mappings("net.fabricmc:yarn:19w05a.6")
     modCompile("net.fabricmc:fabric-loader:0.3.2.96")
     modCompile("net.fabricmc:fabric:0.1.5.88")
-//    modFileCompile("fabric-0.1.5.local-dev")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-29")
 
     // Other libraries
-    add("shadow", "com.github.anymaker:tnjson:1.2")
-    add("shadow", "com.github.Juuxel:Jay:e4e5d72318")
+    add("shadow", "blue.endless:jankson:1.1.1-31")
 
     // Other mods
-    modFileCompile("WateredDown-0.3.2+19w05a-dev")
+    // TODO: Switch to non-dev JAR + modFileCompile when fixed
+    // Issue: FabricMC/fabric-loom#56
+    implementation(group = "", name = "WateredDown-0.3.2+19w05a-dev")
     // TODO: Add back on update
 //    modCompile("net.shadowfacts.simplemultipart:SimpleMultipart:0.1.2")
     // TODO: Bundle Cotton with a J-in-J?
-    modCompile("io.github.cottonmc:cotton:0.0.2+19w02a-SNAPSHOT")
+    modCompile("io.github.cottonmc:cotton:0.0.2+19w05a-SNAPSHOT")
 }
 
 tasks.withType<Jar> {
-    from(configurations["shadow"].asFileTree.files.map { zipTree(it) })
+    from(configurations["shadow"].asFileTree.files.map(::zipTree))
 }

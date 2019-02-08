@@ -14,8 +14,8 @@ import net.fabricmc.fabric.events.PlayerInteractionEvent
 import net.minecraft.util.ActionResult
 
 object ThisAndThat : ModInitializer {
-    internal val logger = ModLogger(ThisAndThat::class.java, "ThisAndThat").apply {
-        setPrefixFormat(Ansi.Cyan.and(Ansi.Bold))
+    @JvmField val logger = ModLogger(ThisAndThat::class.java, "ThisAndThat").apply {
+        setPrefixFormat(Ansi.Blue.and(Ansi.Bold))
     }
 
     override fun onInitialize() {

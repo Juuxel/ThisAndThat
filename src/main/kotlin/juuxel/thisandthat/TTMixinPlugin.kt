@@ -30,10 +30,7 @@ class TTMixinPlugin : IMixinConfigPlugin {
         private const val PACKAGE = "juuxel.thisandthat.mixin"
         private val mixinStates = mapOf(
             "$PACKAGE.client.BiomeMixin" to {
-                ModConfig
-                    .getInstance()
-                    .tweaks
-                    .changeSkyColor
+                ModConfig.getInstance().tweaks.changeSkyColor
             },
             "$PACKAGE.client.WorldMixin" to {
                 ModConfig.getInstance().tweaks.cloudColorMode != CloudColorMode.Vanilla

@@ -4,7 +4,6 @@
   "plugin": "juuxel.thisandthat.TTMixinPlugin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BurnTimeMixin",
     "ItemDropsMixin",
     "MinecraftServerMixin",
     "TorchPlacementMixin"

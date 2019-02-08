@@ -6,6 +6,7 @@ package juuxel.thisandthat.lib
 
 import juuxel.thisandthat.item.*
 import juuxel.thisandthat.util.ModContent
+import net.fabricmc.fabric.api.registry.FuelRegistry
 import net.minecraft.item.Item
 import net.minecraft.util.registry.Registry
 
@@ -26,5 +27,7 @@ object ModItems : ModRegistry() {
 
         if (ModConfig.getInstance().items.enderFeathers)
             enderFeather = register(Registry.ITEM, EnderFeatherItem())
+
+        FuelRegistry.INSTANCE.add(prismarineCoal.unwrap(), 2000)
     }
 }

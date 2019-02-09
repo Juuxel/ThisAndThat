@@ -24,7 +24,7 @@ class TankBlock : GlassBlock(Settings.copy(Blocks.GLASS)), ModBlock, Fluidloggab
     }
 
     override fun appendProperties(builder: StateFactory.Builder<Block, BlockState>) {
-        builder.with(FluidProperty.FLUID)
+        Fluidloggable.onAppendProperties(builder)
     }
 
     override fun getPlacementState(

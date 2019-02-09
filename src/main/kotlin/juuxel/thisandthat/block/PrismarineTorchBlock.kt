@@ -26,13 +26,12 @@ class PrismarineTorchBlock : TorchBlock(settings), ModBlock, Fluidloggable {
     }
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.blockPos)
-        return super.getPlacementState(context)?.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
+        return Fluidloggable.onGetPlacementState(context, super.getPlacementState(context))
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
         super.appendProperties(p0)
-        p0.with(FluidProperty.FLUID)
+        Fluidloggable.onAppendProperties(p0)
     }
 
     class Wall(settings: Settings) : WallTorchBlock(settings), ModBlock, Fluidloggable {

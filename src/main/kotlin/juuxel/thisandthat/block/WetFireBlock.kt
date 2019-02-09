@@ -63,12 +63,11 @@ class WetFireBlock : Block(FabricBlockSettings.copy(Blocks.FIRE).ticksRandomly()
     }
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.blockPos)
-        return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
+        return Fluidloggable.onGetPlacementState(context, defaultState)
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(FluidProperty.FLUID)
+        Fluidloggable.onAppendProperties(p0)
     }
 
     override fun hasRandomTicks(state: BlockState?) = true

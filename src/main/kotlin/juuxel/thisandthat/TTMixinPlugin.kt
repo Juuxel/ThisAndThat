@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo
 
 class TTMixinPlugin : IMixinConfigPlugin {
-    override fun onLoad(mixinPackage: String?) {
-        require(mixinPackage?.startsWith(PACKAGE) == true) {
+    override fun onLoad(mixinPackage: String) {
+        require(mixinPackage.startsWith(PACKAGE)) {
             "Invalid package: Expected $PACKAGE, found $mixinPackage"
         }
     }

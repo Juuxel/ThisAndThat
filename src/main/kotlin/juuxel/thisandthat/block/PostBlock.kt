@@ -34,11 +34,10 @@ class PostBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Flui
         PlatformBlock.postShape
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.blockPos)
-        return this.defaultState.with(FluidProperty.FLUID, FluidProperty.Wrapper(state.fluid))
+        return Fluidloggable.onGetPlacementState(context, defaultState)
     }
 
     override fun appendProperties(p0: StateFactory.Builder<Block, BlockState>) {
-        p0.with(FluidProperty.FLUID)
+        Fluidloggable.onAppendProperties(p0)
     }
 }

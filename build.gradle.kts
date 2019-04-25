@@ -34,3 +34,13 @@ dependencies {
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
 }
+
+tasks.getByName<ProcessResources>("processResources") {
+    filesMatching("fabric.mod.json") {
+        expand(
+            mutableMapOf(
+                "version" to project.version
+            )
+        )
+    }
+}

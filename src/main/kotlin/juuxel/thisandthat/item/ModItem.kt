@@ -5,7 +5,7 @@
 package juuxel.thisandthat.item
 
 import juuxel.thisandthat.util.ModContent
-import net.minecraft.client.item.TooltipOptions
+import net.minecraft.client.item.TooltipContext
 import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.text.TextComponent
@@ -19,7 +19,11 @@ open class ModItem(
     private val hasDescription: Boolean = false,
     private val descriptionKey: String = "%TranslationKey.desc"
 ) : Item(settings), ModContent<Item> {
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(
+        stack: ItemStack?,
+        world: World?,
+        list: MutableList<TextComponent>, context: TooltipContext?) {
+        super.buildTooltip(stack, world, list, context)
         if (hasDescription)
             list.add(TranslatableTextComponent(descriptionKey.replace("%TranslationKey", translationKey)).modifyStyle {
                 it.isItalic = true

@@ -6,10 +6,10 @@ package juuxel.thisandthat.item
 
 import juuxel.thisandthat.util.ModBlock
 import juuxel.thisandthat.util.ModContent
-import net.minecraft.client.item.TooltipOptions
+import net.minecraft.client.item.TooltipContext
+import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemStack
-import net.minecraft.item.block.BlockItem
-import net.minecraft.item.block.WallStandingBlockItem
+import net.minecraft.item.WallStandingBlockItem
 import net.minecraft.text.TextComponent
 import net.minecraft.text.TextFormat
 import net.minecraft.text.TranslatableTextComponent
@@ -22,7 +22,7 @@ class ModWallBlockItem(ground: ModBlock, wall: ModBlock) :
     private val hasDescription = ground.hasDescription
     private val descriptionKey = ground.descriptionKey
 
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipContext?) {
         if (hasDescription)
             list.add(
                 TranslatableTextComponent(

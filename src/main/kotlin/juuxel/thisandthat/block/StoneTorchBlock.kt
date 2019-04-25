@@ -5,7 +5,7 @@
 package juuxel.thisandthat.block
 
 import juuxel.thisandthat.util.ModBlock
-import net.fabricmc.fabric.block.FabricBlockSettings
+import net.fabricmc.fabric.api.block.FabricBlockSettings
 import net.minecraft.block.Blocks
 import net.minecraft.block.TorchBlock
 import net.minecraft.block.WallTorchBlock

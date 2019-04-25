@@ -11,6 +11,7 @@ import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
 import net.minecraft.block.Waterloggable
+import net.minecraft.entity.VerticalEntityPosition
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.Item
@@ -44,21 +45,21 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Wa
         val z = pos.z + 0.5
 
         for (i in 1..3) {
-            world.method_8494(ParticleTypes.BUBBLE_COLUMN_UP, x, y, z, 0.0, 0.0, 0.0)
+            world.addImportantParticle(ParticleTypes.BUBBLE_COLUMN_UP, x, y, z, 0.0, 0.0, 0.0)
         }
     }
 
     override fun hasRandomTicks(p0: BlockState?) = true
     override fun getTickRate(p0: ViewableWorld?) = 3
-    override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = shape
+    override fun getOutlineShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?, vep: VerticalEntityPosition?) = shape
 
     override fun getFluidState(state: BlockState): FluidState {
-        return if (state.get(Properties.WATERLOGGED)) Fluids.WATER.getState(false)
+        return if (state.get(Properties.WATERLOGGED)) Fluids.WATER.getStill(false)
         else super.getFluidState(state)
     }
 
     override fun getPlacementState(context: ItemPlacementContext): BlockState? {
-        val state = context.world.getFluidState(context.pos)
+        val state = context.world.getFluidState(context.blockPos)
         return this.defaultState.with(
             Properties.WATERLOGGED,
             state.matches(FluidTags.WATER)// && state.method_15761() == 8
@@ -70,6 +71,6 @@ class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Wa
     }
 
     companion object {
-        private val shape = Block.createCubeShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
+        private val shape = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
     }
 }

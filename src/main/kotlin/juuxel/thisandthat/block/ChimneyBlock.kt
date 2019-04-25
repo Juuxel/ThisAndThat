@@ -10,6 +10,7 @@ import net.fabricmc.api.Environment
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
 import net.minecraft.block.Blocks
+import net.minecraft.entity.VerticalEntityPosition
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup
 import net.minecraft.particle.ParticleTypes
@@ -31,15 +32,15 @@ class ChimneyBlock : Block(Settings.copy(Blocks.BRICKS)), ModBlock {
         val z = pos.z + 0.5
 
         for (i in 1..3) {
-            world.method_8494(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0, 0.0, 0.0)
+            world.addImportantParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0, 0.0, 0.0)
         }
     }
 
     override fun hasRandomTicks(p0: BlockState?) = true
     override fun getTickRate(p0: ViewableWorld?) = 3
-    override fun getBoundingShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?) = shape
+    override fun getOutlineShape(p0: BlockState?, p1: BlockView?, p2: BlockPos?, vep: VerticalEntityPosition?) = shape
 
     companion object {
-        private val shape = Block.createCubeShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
+        private val shape = Block.createCuboidShape(4.0, 0.0, 4.0, 12.0, 12.0, 12.0)
     }
 }

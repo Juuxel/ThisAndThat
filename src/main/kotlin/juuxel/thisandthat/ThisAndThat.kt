@@ -35,8 +35,7 @@ object ThisAndThat : ModInitializer {
         registerBlock(BubbleChimneyBlock())
     }
 
-    @Suppress("UNCHECKED_CAST")
-    private fun <R> register(registry: Registry<R>, content: ModContent<R>): ModContent<R> {
+    private fun <R> register(registry: Registry<in R>, content: ModContent<R>): ModContent<R> {
         Registry.register(registry, "thisandthat:${content.name}", content.unwrap())
         return content
     }

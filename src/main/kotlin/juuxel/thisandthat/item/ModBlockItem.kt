@@ -7,9 +7,9 @@ package juuxel.thisandthat.item
 import juuxel.thisandthat.util.ModBlock
 import juuxel.thisandthat.util.ModContent
 import net.minecraft.block.Waterloggable
-import net.minecraft.client.item.TooltipOptions
+import net.minecraft.client.item.TooltipContext
+import net.minecraft.item.BlockItem
 import net.minecraft.item.ItemStack
-import net.minecraft.item.block.BlockItem
 import net.minecraft.text.TextComponent
 import net.minecraft.text.TextFormat
 import net.minecraft.text.TranslatableTextComponent
@@ -22,7 +22,7 @@ class ModBlockItem(block: ModBlock)
     private val descriptionKey = block.descriptionKey
     private val isWaterloggable = block is Waterloggable
 
-    override fun addInformation(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipOptions?) {
+    override fun buildTooltip(p0: ItemStack?, p1: World?, list: MutableList<TextComponent>, p3: TooltipContext?) {
         if (isWaterloggable)
             list.add(TranslatableTextComponent("desc.thisandthat.waterloggable").modifyStyle {
                 it.color = TextFormat.BLUE

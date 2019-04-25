@@ -1,9 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.3.11"
+    kotlin("jvm") version "1.3.30"
     idea
-    id("fabric-loom") version "0.1.0-SNAPSHOT"
+    id("fabric-loom") version "0.2.2-SNAPSHOT"
 }
 
 java {
@@ -15,7 +15,7 @@ base {
     archivesBaseName = "ThisAndThat"
 }
 
-version = "0.1.1"
+version = "0.1.2+1.14"
 
 minecraft {
 }
@@ -25,13 +25,12 @@ tasks.withType<KotlinCompile> {
 }
 
 dependencies {
-	compile(kotlin("stdlib-jdk8"))
-	minecraft("com.mojang:minecraft:18w50a")
-	mappings("net.fabricmc:yarn:18w50a.7")
-	modCompile("net.fabricmc:fabric-loader:0.2.0.65")
-    modCompile("net.fabricmc:fabric-language-kotlin:1.3.10-26")
-    compileOnly("net.fabricmc:fabric-language-kotlin:1.3.10-26")
+    minecraft("com.mojang:minecraft:1.14")
+    mappings("net.fabricmc:yarn:1.14+build.1")
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modCompile("net.fabricmc:fabric:0.1.1.47")
+    // Fabric
+    modCompile("net.fabricmc:fabric-loader:0.4.2+build.132")
+    modCompile("net.fabricmc:fabric:0.2.7+build.127")
+    modCompile("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
+    compileOnly("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
 }

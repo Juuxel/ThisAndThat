@@ -4,6 +4,9 @@
  */
 package juuxel.thisandthat.item
 
+import io.github.juuxel.polyester.item.PolyesterBaseItem
 import net.minecraft.item.ItemGroup
 
-class StoneRodItem : ModItem("stone_rod", Settings().itemGroup(ItemGroup.MISC), hasDescription = true)
+class StoneRodItem : PolyesterBaseItem("stone_rod", Settings().itemGroup(ItemGroup.MISC)) {
+    override val hasDescription = true
+}

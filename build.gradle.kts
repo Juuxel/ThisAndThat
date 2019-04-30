@@ -15,7 +15,7 @@ base {
     archivesBaseName = "ThisAndThat"
 }
 
-version = "0.1.2+1.14"
+version = "0.1.3+1.14"
 
 minecraft {
 }
@@ -24,15 +24,23 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+repositories {
+    maven(url = "https://minecraft.curseforge.com/api/maven") {
+        name = "CurseForge"
+    }
+}
+
 dependencies {
     minecraft("com.mojang:minecraft:1.14")
     mappings("net.fabricmc:yarn:1.14+build.1")
 
     // Fabric
-    modCompile("net.fabricmc:fabric-loader:0.4.2+build.132")
+    modCompile("net.fabricmc:fabric-loader:0.4.6+build.141")
     modCompile("net.fabricmc:fabric:0.2.7+build.127")
     modCompile("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
     compileOnly("net.fabricmc:fabric-language-kotlin:1.3.30-SNAPSHOT")
+    modCompile("polyester:Polyester:0.2.1+1.14")
+    include("polyester:Polyester:0.2.1+1.14")
 }
 
 tasks.getByName<ProcessResources>("processResources") {

@@ -11,9 +11,7 @@ interface BlockVariant {
     val contentName: String
     val settings: Block.Settings
 
-    enum class Wood(override val contentName: String) : BlockVariant {
-        Oak("oak"), Spruce("spruce"), Birch("birch"), Jungle("jungle"), Acacia("acacia"), DarkOak("dark_oak");
-
+    data class Wood(override val contentName: String) : BlockVariant {
         override val settings = Block.Settings.copy(Blocks.OAK_FENCE)
     }
 

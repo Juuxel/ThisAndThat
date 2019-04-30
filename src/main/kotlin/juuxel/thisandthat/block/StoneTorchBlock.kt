@@ -4,25 +4,21 @@
  */
 package juuxel.thisandthat.block
 
-import juuxel.thisandthat.util.ModBlock
+import io.github.juuxel.polyester.registry.PolyesterBlock
 import net.fabricmc.fabric.api.block.FabricBlockSettings
 import net.minecraft.block.Blocks
 import net.minecraft.block.TorchBlock
 import net.minecraft.block.WallTorchBlock
-import net.minecraft.item.Item
-import net.minecraft.item.ItemGroup
 import net.minecraft.sound.BlockSoundGroup
 
-class StoneTorchBlock : TorchBlock(settings), ModBlock {
+class StoneTorchBlock : TorchBlock(settings), PolyesterBlock {
     override val name = "stone_torch"
-    override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
-    override val registerItem = false
+    override val itemSettings = null
     override val hasDescription = true
 
-    class Wall(settings: Settings) : WallTorchBlock(settings), ModBlock {
+    class Wall(settings: Settings) : WallTorchBlock(settings), PolyesterBlock {
         override val name = "wall_stone_torch"
         override val itemSettings = null
-        override val registerItem = false
     }
 
     companion object {

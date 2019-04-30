@@ -47,7 +47,5 @@
   "block.thisandthat.bubble_chimney.desc": "Bubbles underwater",
   "_2": "Items",
   "item.thisandthat.stone_rod": "Stone Rod",
-  "item.thisandthat.stone_rod.desc": "Crafting ingredient",
-  "_3": "Misc",
-  "desc.thisandthat.waterloggable": "Waterloggable"
+  "item.thisandthat.stone_rod.desc": "Crafting ingredient"
 }

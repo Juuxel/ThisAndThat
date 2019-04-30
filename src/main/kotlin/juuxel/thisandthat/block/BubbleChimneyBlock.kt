@@ -4,7 +4,7 @@
  */
 package juuxel.thisandthat.block
 
-import juuxel.thisandthat.util.ModBlock
+import io.github.juuxel.polyester.registry.PolyesterBlock
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.block.Block
@@ -27,7 +27,7 @@ import net.minecraft.world.ViewableWorld
 import net.minecraft.world.World
 import java.util.*
 
-class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), ModBlock, Waterloggable {
+class BubbleChimneyBlock : Block(Settings.copy(Blocks.PRISMARINE)), PolyesterBlock, Waterloggable {
     override val name = "bubble_chimney"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
     override val hasDescription = true

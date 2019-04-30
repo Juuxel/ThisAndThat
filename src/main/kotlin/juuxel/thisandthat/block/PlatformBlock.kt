@@ -4,7 +4,7 @@
  */
 package juuxel.thisandthat.block
 
-import juuxel.thisandthat.util.ModBlock
+import io.github.juuxel.polyester.registry.PolyesterBlock
 import juuxel.thisandthat.util.BlockVariant
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
@@ -23,7 +23,7 @@ import net.minecraft.util.shape.VoxelShape
 import net.minecraft.util.shape.VoxelShapes
 import net.minecraft.world.BlockView
 
-class PlatformBlock(variant: BlockVariant) : Block(variant.settings), ModBlock, Waterloggable {
+class PlatformBlock(variant: BlockVariant) : Block(variant.settings), PolyesterBlock, Waterloggable {
     override val name = "${variant.contentName}_platform"
     override val itemSettings = Item.Settings().itemGroup(ItemGroup.DECORATIONS)
     override val hasDescription = true
